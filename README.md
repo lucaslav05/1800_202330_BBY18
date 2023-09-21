@@ -13,7 +13,7 @@ List team members and/or short bio's here...
 * Hi, my name is Lucas! I am nervous but also excited for this project
 * Hi, my name is Dongharn Yi! Lets do this!
 * ...
-* Hi my name is Jas! I am overjoyed to work on this project.
+* Hi my name is Jas! I am overjoyed to work on this project. I am scared of turtles
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
