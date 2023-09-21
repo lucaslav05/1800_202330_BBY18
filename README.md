@@ -9,7 +9,7 @@ List team members and/or short bio's here...
 <<<<<<< HEAD
 
 =======
-* Hi, my name is Olivia! I am excited to see what we will create in this project!
+* Hi, my name is Olivia! I am excited to see what we will create in this project! Yay!
 * Hi, my name is Lucas! I am nervous but also excited for this project
 * Hi, my name is Dongharn Yi! Lets do this!
 * ...
