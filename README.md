@@ -6,7 +6,12 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* Hello, my name is Dongharn Yi! Lets do this!
+<<<<<<< HEAD
+
+=======
+* Hi, my name is Olivia! I am excited to see what we will create in this project!
+* Hi, my name is Lucas! I am nervous but also excited for this project
+* Hi, my name is Dongharn Yi! Lets do this!
 * ...
 * ...
 	
