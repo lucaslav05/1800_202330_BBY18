@@ -6,9 +6,18 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
+<<<<<<< HEAD
 * Hi, my name is Lucas! I am nervous but also excited for this project
+=======
+<<<<<<< HEAD
+
+=======
+* Hi, my name is Olivia! I am excited to see what we will create in this project! Yay!
+* Hi, my name is Lucas! I am nervous but also excited for this project
+* Hi, my name is Dongharn Yi! I am pretty nervous because I am newbie but, lets do this! 
+>>>>>>> 0a7d8ca8e0e39b1b9cfe21854de4a1d42e4a8d2b
 * ...
-* Hi my name is Jas! I am overjoyed to work on this project.
+* Hi my name is Jas! I am overjoyed to work on this project. I am scared of turtles
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
