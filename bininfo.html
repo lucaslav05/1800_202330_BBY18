@@ -20,9 +20,20 @@
   <!-- Other libraries go here -->
   <!-- Google Icons (Material Design)-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <!-- Link to styles of your own -->
   <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    </style>
 
 </head>
 
@@ -37,23 +48,32 @@
 
   <!--Link to the nav bar here -->
   
+  <!--Container that has the information for a bin-->
   <div id="bininfo" class="container py-3">
+
+    <!--Title and favourites button-->
     <div class="d-flex justify-content-between" >
         <h3 id="bintitle">Bin Title</h3>
+        <span class="material-icons material-symbols-outlined" id="favouriteButton">favorite</span>
     </div>
 
-    <div id="location-container" class="d-flex justify-content-start">
+    <!--Location and view on map button-->
+    <div id="location-container" class="d-flex justify-content-between py-3">
         <p><b>Location: </b> <span id="binlocation"> 123 Street Name</span></p>
+        <button type="button" class="btn btn-primary btn-sm" id="viewOnMap">View on Map</button>
     </div>
 
-    <div id="itemtype-container" class="d-flex justify-content-start">
+    <!--Item type-->
+    <div id="itemtype-container" class="d-flex justify-content-start py-3">
         <p><b>Item Type: </b> <span id="binitemtype"> Recycling</span></p>
     </div>
 
-    <div id="availability-container" class="d-flex justify-content-start">
+    <!--Availability-->
+    <div id="availability-container" class="d-flex justify-content-start py-3">
         <p><b>Availability: </b> <span id="binavailability"> Oct 6 - Oct 7, 5pm - 9pm</span></p>
     </div>
 
+    <!--Image and additional details-->
     <div>
         <img src="images/placeholder_image.jpg" class="img-thumbnail" alt="placeholder image">
         <!-- image is under creative commons license -->
@@ -62,6 +82,12 @@
             <p><b>Additional Details: </b> <span id="bindetails"> Here are some additional details</span></p>
         </div>
         
+    </div>
+
+    <!--Add items to bin button-->
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary" type="button" id="addItemsButton">Add Items to Bin</button>
+      
     </div>
     
 
@@ -81,6 +107,7 @@
 
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
+  <script src="./scripts/bininfo.js"></script>
 
 </body>
 
