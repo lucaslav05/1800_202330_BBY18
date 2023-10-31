@@ -81,7 +81,8 @@
 
     <!--Availability-->
     <div id="availability-container" class="d-flex justify-content-start py-3">
-        <p><b>Availability: </b> <span id="binavailability"> Oct 6 - Oct 7, 5pm - 9pm</span></p>
+        <p><b>Start Date: </b> <span id="binstart"> Oct 6</span></p>
+        <p class="px-5"><b>End Date: </b> <span id="binend"> Oct 7</span></p>
     </div>
 
     <!--Image and additional details-->
@@ -96,10 +97,46 @@
     </div>
 
     <!--Add items to bin button-->
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-primary" type="button" id="addItemsButton">Add Items to Bin</button>
+    
+    <!--Container for the Add Items button and the Comment Section-->
+    <div >
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#commentSection" aria-expanded="false" aria-controls="collapseExample">
+          Comments
+        </button>
+        
+        <button class="btn btn-primary align-self-start" type="button" id="addItemsButton">Add Items</button>
+      
+      </div>
+     
+      <div class="collapse" id="commentSection">
+        <div class="card">
+          <div class="card-header">
+            New Comment
+          </div>
+          <div class="card-body">
+            
+            <input type="text" id="postalcode" placeholder="Write a comment...">
+            <a href="#" class="btn btn-primary">Post</a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">UserName</h5>
+            
+            <p class="card-text">This is a placeholder comment</p>
+            <a href="#" class="card-link">Like</a>
+            <a href="#" class="card-link">Reply</a>
+          </div>
+        </div>
+
+      </div>
+
       
     </div>
+    
+
     
 
     
