@@ -35,7 +35,15 @@
     <!-------------------------------------------->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <style>
+        .Bins{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+            margin-top: 25px;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,36 +56,45 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
-    <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold">Welcome to Recycle Route!</h1>
-        <div class="col-lg-6 mx-auto">
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-info btn-lg px-4 gap-3"><span class="material-symbols-outlined">
-                    recycling
-                    </span> Find a Bin</button>
-            </div>
-            <br>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-info btn-lg px-4 gap-3"><span class="material-symbols-outlined">
-                    add_circle
-                    </span> Post</button>
-            </div>
-            <br>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-info btn-lg px-4 gap-3"><span class="material-symbols-outlined">
-                    box
-                    </span> My Posts</button>
-            </div>
-            <br>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-info btn-lg px-4 gap-3"><span class="material-symbols-outlined">
-                    heart_plus
-                    </span> Favourites</button>
-            </div>
+    <div class="Bins">
+    <div class="card" style="width: 25rem;">
+        <img src="https://proslat.ca/cdn/shop/products/65003_B_grande.jpg?v=1601561956" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Bin 1</h5>
+          <p class="card-text"><b>Location:</b> 123 Street Name<br>
+          <b>Item Type:</b> Bottles / Cans</p>
+          <a href="#" class="btn btn-primary">Search</a>
         </div>
+      </div>
+      <br>
+      <div class="card" style="width: 25rem;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuOwbvK0MH7sKCkiVNzUyCuiIFKiybOtsRCw&usqp=CAU" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Bin 2</h5>
+          <p class="card-text"><b>Location:</b> 123 Street Name<br>
+            <b>Item Type:</b> Cardboard</p>
+          <a href="#" class="btn btn-primary">Search</a>
+        </div>
+      </div>
+      <br>
+      <div class="card" style="width: 25rem;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM9noHDbZX52lE7_yjlT7MlhaVa4TKieifaw&usqp=CAU" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Bin 3</h5>
+          <p class="card-text"><b>Location:</b> 123 Street Name<br>
+            <b>Item Type:</b> Metal</p>
+          <a href="#" class="btn btn-primary">Search</a>
+        </div>
+      </div>
     </div>
     <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
+    <footer class="navbar justify-content-evenly bg-info fixed-bottom">
+        <div class="container">
+            <span class="material-symbols-outlined">arrow_back_ios</span>
+            <span class="material-symbols-outlined">restart_alt</span>
+                   
+            </div>
+   </footer>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
