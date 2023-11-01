@@ -47,57 +47,40 @@
   <!-- Stuff for body goes here -->
 
   <!--Link to the nav bar here -->
-  
-  <!--Container that has the information for a bin-->
-  <div id="bininfo" class="container py-3">
+    
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">My Bins</a>
+</nav>
 
-    <!--Title and favourites button-->
-    <div class="d-flex justify-content-between" >
-        <h3 id="bintitle">Bin Title</h3>
-        <span class="material-icons material-symbols-outlined" id="favouriteButton">favorite</span>
-    </div>
-
-    <!--Location and view on map button-->
-    <div id="location-container" class="d-flex justify-content-between py-3">
-        <p><b>Location: </b> <span id="binlocation"> 123 Street Name</span></p>
-        <button type="button" class="btn btn-primary btn-sm" id="viewOnMap">View on Map</button>
-    </div>
-
-    <!--Item type-->
-    <div id="itemtype-container" class="d-flex justify-content-start py-3">
-        <p><b>Item Type: </b> <span id="binitemtype"> Recycling</span></p>
-    </div>
-
-    <!--Availability-->
-    <div id="availability-container" class="d-flex justify-content-start py-3">
-        <p><b>Availability: </b> <span id="binavailability"> Oct 6 - Oct 7, 5pm - 9pm</span></p>
-    </div>
-
-    <!--Image and additional details-->
-    <div>
-        <img src="images/placeholder_image.jpg" class="img-thumbnail" alt="placeholder image">
-        <!-- image is under creative commons license -->
-
-        <div id="details-container">
-            <p><b>Additional Details: </b> <span id="bindetails"> Here are some additional details</span></p>
-        </div>
-        
-    </div>
-
-    <!--Add items to bin button-->
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-primary" type="button" id="addItemsButton">Add Items to Bin</button>
       
+      <!--Container for Bins-->
+<div id="mybins" class="card-deck mt-4">
+    <!-- Example Card of a bin -->
+    <div class="card" style="width: 18rem;">
+      <img src="images/placeholder_image.jpg" class="card-img-top" alt="placeholder image">
+        
+        <!--Card Body with event title, event details, and button-->
+        
+        <!--Event title-->
+      <div class="card-body">
+        <h5 class="card-title"><div id="event-title" class="d-flex justify-content-start mt-4"> <p><b>Event Title: </b> <span id="event-title"> placeholder title</span></p>
+    </div></h5>
+          
+           <!--Event details-->
+        <p class="card-text"><div id="event-details" class="d-flex justify-content-start mt-4"><p><b>Event Details: </b> <span id="event-deets"> Main note about event</span></p>
+          
+           <!--Button-->
+    </div></p>
+        <a href="#" class="btn btn-primary">More Info</a>
+      </div>
     </div>
-    
 
-    
-    
-    
-    
 
 
   </div>
+
+    
 
   <!--Link to footer here-->
 
