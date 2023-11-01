@@ -1,1 +1,11 @@
 
+.Bins{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 25px;
+}
+a{text-decoration: none; color: #333;}
+h1{text-align: center;
+margin-top: 15px;}
