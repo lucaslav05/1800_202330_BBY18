@@ -51,49 +51,46 @@
     <!-- the body of your page goes here -->
     <!-- stuff -->
 
-    <h1>Available bins</h1>
+    <div id="available"  class="px-4 pt-5 my-5 text-center border-bottom">
+      <h1 class="display-4 fw-bold">Available Bins</h1>
+      <br/><br/>
+      <h3>Click "View Details" on any of the available bins below to find more information</h3>
+
+      <div id="available-bins-container" class="row row-cols-auto">
+
+      
 
 
-    <div class="Bins">
-    <div class="card" style="width: 25rem;">
-        <img src="https://proslat.ca/cdn/shop/products/65003_B_grande.jpg?v=1601561956" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bin 1</h5>
-          <p class="card-text"><b>Location:</b> 123 Street Name<br>
-          <b>Item Type:</b> Bottles / Cans</p>
-          <a href="bininfo.html" class="btn btn-primary">View Details</a>
-        </div>
       </div>
-      <br>
-      <div class="card" style="width: 25rem;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuOwbvK0MH7sKCkiVNzUyCuiIFKiybOtsRCw&usqp=CAU" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bin 2</h5>
-          <p class="card-text"><b>Location:</b> 123 Street Name<br>
-            <b>Item Type:</b> Cardboard</p>
-          <a href="#" class="btn btn-primary">View Details</a>
-        </div>
-      </div>
-      <br>
-      <div class="card" style="width: 25rem;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM9noHDbZX52lE7_yjlT7MlhaVa4TKieifaw&usqp=CAU" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bin 3</h5>
-          <p class="card-text"><b>Location:</b> 123 Street Name<br>
-            <b>Item Type:</b> Metal</p>
-          <a href="#" class="btn btn-primary">View Details</a>
-        </div>
-      </div>
-    </div>
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
+
+    <!--Template for the card-->
+
+    <template id="available-bin-template">
+      <div class="card py-2 mx-2">
+        <div class="card-header">
+          Available
+        </div>
+        <div class="card-body ">
+          <h5 class="card-title" id="available-title">Title</h5>
+          <p class="card-text"><b>Location:</b> <span id="available-location">123 burnaby</span></p>
+          <p class="card-text"><b>Items Accepted:</b> <span id="available-item">plastic</span></p>
+          <a href="#" class="btn btn-primary" id="view-available-details">View Details</a>
+        </div>
+      </div>
+
+    </template>
+
+    
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_TEAM99.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/authentication.js"></script>
+    <!-- <script src="./scripts/authentication.js"></script> -->
+    <!-- <script src="./scripts/available.js"></script> -->
     <!-- <script src="./scripts/script.js"></script> -->
   
 
