@@ -9,12 +9,15 @@ function displayAvailableBins(collection) {
                 var title = doc.data().title;
                 var location = doc.data().location;
                 var type = doc.data().type;
+                var docID = doc.id;
+                var binCode = doc.data().code;
 
                 let newcard = cardTemplate.contentEditable.cloneNode(true);
 
                 newcard.querySelector("#available-title").innerHTML = title;
                 newcard.querySelector("#available-location").innerHTML = location;
                 newcard.querySelector("#available-item").innerHTML = type;
+                newcard.querySelector('#view-available-details').href = "bininfo.html?docID="+docID;
 
                 document.getElementById("available-bins-container").append(newCard);
 
@@ -33,13 +36,15 @@ function displayAvailableBins(collection) {
 //                 var title = doc.data().title;
 //                 var location = doc.data().location;
 //                 var type = doc.data().type;
+//                 var docID = doc.id;
+//                 var binCode = doc.data().code; 
 
 //                 let newcard = cardTemplate.contentEditable.cloneNode(true);
 
 //                 newcard.querySelector("#available-title").innerHTML = title;
 //                 newcard.querySelector("#available-location").innerHTML = location;
 //                 newcard.querySelector("#available-item").innerHTML = type;
-
+//                 newcard.querySelector('#view-available-details').href = "bininfo.html?docID="+docID;
 //                 document.getElementById("available-bins-container").append(newCard);
 
 //             })
