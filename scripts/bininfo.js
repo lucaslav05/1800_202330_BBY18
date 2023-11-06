@@ -31,7 +31,7 @@ function displayBinInfo() {
         .get()
         .then(doc => {
             thisBin = doc.data();
-            binCode = thisBin.code;  // I don't know if this is necessary
+            
 
             binTitle = doc.data().title;
             binLocation = doc.data().location;
@@ -42,7 +42,6 @@ function displayBinInfo() {
 
             document.getElementById("bintitle").innerHTML = binTitle;
             document.getElementById("binlocation").innerHTML = binLocation;
-            document.getElementById("binstart").innerHTML = binStart;
             document.getElementById("binend").innerHTML = binEnd;
             document.getElementById("binitemtype").innerHTML = binType;
             document.getElementById("bindetails").innerHTML = binDescription;
