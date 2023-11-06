@@ -10,14 +10,14 @@
 //                 var location = doc.data().location;
 //                 var type = doc.data().type;
 //                 var docID = doc.id;
-//                 var binCode = doc.data().code;
+                
 
-//                 let newcard = cardTemplate.contentEditable.cloneNode(true);
+//                 let newCard = cardTemplate.content.cloneNode(true);
 
-//                 newcard.querySelector("#available-title").innerHTML = title;
-//                 newcard.querySelector("#available-location").innerHTML = location;
-//                 newcard.querySelector("#available-item").innerHTML = type;
-//                 newcard.querySelector('#view-available-details').href = "bininfo.html?docID="+docID;
+//                 newCard.querySelector('#available-title').innerHTML = title;
+//                 newCard.querySelector('#available-location').innerHTML = location;
+//                 newCard.querySelector('#available-item').innerHTML = type;
+//                 newCard.querySelector('#view-available-details').href = "bininfo.html?docID="+docID;
 
 //                 document.getElementById("available-bins-container").append(newCard);
 
@@ -46,7 +46,7 @@
 function displayAvailableBins(collection) {
     let cardTemplate = document.getElementById("available-bin-template")
 
-    db.collection(collection).where("status", "==", "active")
+    db.collection(collection).where("status", "==", "Active")
         .get()
         .then(allBins=> {
             allBins.forEach(doc => {
@@ -56,12 +56,12 @@ function displayAvailableBins(collection) {
                 var docID = doc.id;
                 
 
-                let newcard = cardTemplate.contentEditable.cloneNode(true);
+                let newCard = cardTemplate.content.cloneNode(true);
 
-                newcard.querySelector("#available-title").innerHTML = title;
-                newcard.querySelector("#available-location").innerHTML = location;
-                newcard.querySelector("#available-item").innerHTML = type;
-                newcard.querySelector('#view-available-details').href = "bininfo.html?docID="+docID;
+                newCard.querySelector("#available-title").innerHTML = title;
+                newCard.querySelector("#available-location").innerHTML = location;
+                newCard.querySelector("#available-item").innerHTML = type;
+                newCard.querySelector('#view-available-details').href = "bininfo.html?docID="+docID;
                 document.getElementById("available-bins-container").append(newCard);
 
             })
