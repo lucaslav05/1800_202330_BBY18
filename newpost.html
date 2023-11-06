@@ -54,42 +54,46 @@
         <h1 class="display-4 fw-bold">Create A Bin</h1>
 
         <form>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input type="address" class="form-control" id="title" placeholder="Enter Title">
+            </div>
+
             <div class="form-group">
                 <label for="exampleFormControlInput1">Address</label>
-                <input type="address" class="form-control" id="exampleFormControlInput1" placeholder="Enter Address">
-                <label for="exampleFormControlInput1">Address Line 2 (Optional)</label>
-                <input type="address" class="form-control" id="exampleFormControlInput1" placeholder="Enter Address">
+                <input type="address" class="form-control" id="address" placeholder="Enter Address">
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Accepted Items</label>
                 <div style="border: 1px solid">
                     <div class="form-check">
-                        <input class="Bottles" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="Bottles" type="radio" name="flexRadioDefault" id="bottles">
                         <label class="Bottles" for="flexRadioDefault1">
                             Bottles
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="Cardboard" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <input value="Cardboard" type="radio" name="flexRadioDefault" id="cardboard" checked>
                         <label class="Cardboard" for="flexRadioDefault2">
                             Cardboard
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="Electronics" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input value="Electronics" type="radio" name="flexRadioDefault" id="electronics">
                         <label class="Electronics" for="flexRadioDefault1">
                             Electronics
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="Metal" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <input value="Metal" type="radio" name="flexRadioDefault" id="metal" checked>
                         <label class="Metal" for="flexRadioDefault2">
                             Metal
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="Styrofoam" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <input value="Styrofoam" type="radio" name="flexRadioDefault" id="styrofoam" checked>
                         <label class="Styrofoam" for="flexRadioDefault2">
                             Styrofoam
                         </label>
@@ -100,7 +104,7 @@
 
 
                 <label for="exampleFormControlDate">End Date: </label>
-                <input type="date" id="startDate" name="startDate">
+                <input type="date" id="endDate" name="endDate">
             </div>
             <br>
             <div>
@@ -110,8 +114,9 @@
             <br>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="description" rows="3"></textarea>
             </div>
+                <button id="postButton" type="button" class="btn btn-primary">Submit</button>
         </form>
 
     </div>
@@ -127,5 +132,6 @@
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_TEAM99.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/newpost.js"></script>
 
 </body>
