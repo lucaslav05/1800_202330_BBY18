@@ -25,7 +25,8 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-- Other libraries go here -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Link to styles of your own -->
@@ -53,36 +54,57 @@
         <h1 class="display-4 fw-bold">Create A Bin</h1>
 
         <form>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input type="address" class="form-control" id="title" placeholder="Enter Title">
+            </div>
+
             <div class="form-group">
                 <label for="exampleFormControlInput1">Address</label>
-                <input type="address" class="form-control" id="exampleFormControlInput1" placeholder="Enter Address">
-                <label for="exampleFormControlInput1">Address Line 2 (Optional)</label>
-                <input type="address" class="form-control" id="exampleFormControlInput1" placeholder="Enter Address">
+                <input type="address" class="form-control" id="address" placeholder="Enter Address">
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Purpose Of Bin</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Community Collection</option>
-                    <option>Recyling Drive</option>
-                    <option>Other</option>
-                </select>
-            </div>
+
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Accepted Items</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option>Bottles / Cans</option>
-                    <option>Cardboard</option>
-                    <option>Electronics</option>
-                    <option>Metal</option>
-                    <option>Styrofoam</option>
-                </select>
+                <div style="border: 1px solid">
+                    <div class="form-check">
+                        <input class="Bottles" type="radio" name="flexRadioDefault" id="bottles">
+                        <label class="Bottles" for="flexRadioDefault1">
+                            Bottles
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input value="Cardboard" type="radio" name="flexRadioDefault" id="cardboard" checked>
+                        <label class="Cardboard" for="flexRadioDefault2">
+                            Cardboard
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input value="Electronics" type="radio" name="flexRadioDefault" id="electronics">
+                        <label class="Electronics" for="flexRadioDefault1">
+                            Electronics
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input value="Metal" type="radio" name="flexRadioDefault" id="metal" checked>
+                        <label class="Metal" for="flexRadioDefault2">
+                            Metal
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input value="Styrofoam" type="radio" name="flexRadioDefault" id="styrofoam" checked>
+                        <label class="Styrofoam" for="flexRadioDefault2">
+                            Styrofoam
+                        </label>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlDate">Start Date: </label>
-                <input type="date" id="startDate" name="startDate">
+
 
                 <label for="exampleFormControlDate">End Date: </label>
-                <input type="date" id="startDate" name="startDate">
+                <input type="date" id="endDate" name="endDate">
             </div>
             <br>
             <div>
@@ -92,8 +114,9 @@
             <br>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="description" rows="3"></textarea>
             </div>
+                <button id="postButton" type="button" class="btn btn-primary">Submit</button>
         </form>
 
     </div>
@@ -101,13 +124,14 @@
     <nav id="footerPlaceholder"></nav>
 
 
-<!--Link to footer here-->
-<nav id="footerPlaceholder"></nav>
+    <!--Link to footer here-->
+    <nav id="footerPlaceholder"></nav>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_TEAM99.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/newpost.js"></script>
 
 </body>
