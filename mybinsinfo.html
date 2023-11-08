@@ -18,15 +18,26 @@
     crossorigin="anonymous"></script>
 
   <!-- Other libraries go here -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
   <!-- Google Icons (Material Design)-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
   <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css">
   <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style.css">
 
   <style>
     .material-symbols-outlined {
@@ -52,113 +63,41 @@
   <!--Link to the nav bar here -->
   <nav id="navbarPlaceholder"></nav>
   <!--Container that has the information for a bin-->
-  <div id="mybinsinfo" class="container py-3">
+  <!-- <div id="mybinsinfo" class="container py-3"> -->
 
-    <!--Title of bin and favourites button-->
-    <div class="d-flex justify-content-between" >
-        <h3 id="bintitle">Bin Title</h3>
-        <span class="material-icons material-symbols-outlined" id="favouriteButton">favorite</span>
-    </div>
-
-    <!--Location and view on map button-->
-    <div id="location-container" class="d-flex justify-content-between py-3">
-        <p><b>Location: </b> <span id="binlocation"> 123 Street Name</span></p>
-        <button type="button" class="btn btn-primary btn-sm" id="viewOnMap">View on Map</button>
-    </div>
-
-    <!--Item type-->
-    <div id="itemtype-container" class="d-flex justify-content-start py-3">
-        <p><b>Item Type: </b> <span id="binitemtype"> Recycling</span></p>
-    </div>
-
-    <!--Availability-->
-    <div id="availability-container" class="d-flex justify-content-start py-3">
-        <p><b>Availability: </b> <span id="binavailability"> Oct 6 - Oct 7, 5pm - 9pm</span></p>
-    </div>
-
-    <!--Image and additional details-->
-    <div>
-        <img src="images/placeholder_image.jpg" class="img-thumbnail" alt="placeholder image">
-        <!-- image is under creative commons license -->
-
-        <div id="details-container">
-            <p><b>Additional Details: </b> <span id="bindetails"> Here are some additional details</span></p>
-        </div>
-        
-    </div>
-
-    <!--Add items to bin button-->
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-primary" type="button" id="EndEvent">End Event</button>
-      
-    </div>
-    
-<div class="row row-cols-1 row-cols-md-2 g-4">
-    
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-<!--        <h5 class="card-title">Card title</h5>-->
-          
-        <div class="d-flex justify-content-between" >
-        <h3 id="bintitle">Bin Title</h3>
-        <span class="material-icons material-symbols-outlined" id="favouriteButton">favorite</span>
-        </div>
-          
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
+<div id="mybinsinfo" class = "container py-3">
+      <h1>Make a Post </h1>
+      <form>
+          <div id="form-group">
+              <label>Comments</label>
+              <textarea id="description" rows="4" cols="50"></textarea>
+          </div>
+          <div id="container py-3">
+              <input type="file" id="mypic-input" accept="image/*" />
+              <img class="mypic-goes-here" width=100 height=100 />
+          </div>
+          <div id="d-flex mt-5">
+              <button type="button" class="btn btn-info" onclick="savePost()">Post Now</button>
+          </div>
+      </form>
   </div>
-    
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-    
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-    
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-    
-    
-    
-    
 
 
-  </div>
 
   <!--Link to footer here-->
-<nav id="footerPlaceholder"></nav>
+  <nav id="footerPlaceholder"></nav>
 
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->
 
   <!-- Link to scripts of your own -->
-  <!-- <script src="./scripts/script.js"></script> -->
-  <script src="./scripts/bininfo.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/fakemybins.js"></script>
+  <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/authentication.js"></script>
+
     
 
     
