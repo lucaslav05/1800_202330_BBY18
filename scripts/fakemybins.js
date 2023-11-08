@@ -31,7 +31,7 @@ function displayBinInfo() {
         .get()
         .then(doc => {
             thisBin = doc.data();
-            
+
 
             binTitle = doc.data().title;
             binLocation = doc.data().location;
@@ -52,3 +52,14 @@ function displayBinInfo() {
 }
 
 displayBinInfo();
+
+
+
+import { doc, updateDoc } from "firebase/firestore";
+
+const ActiveRef = doc(db, "posts", "Inactive");
+
+// Set the "status" to inactive
+await updateDoc(ActiveRef, {
+    status: true
+});
