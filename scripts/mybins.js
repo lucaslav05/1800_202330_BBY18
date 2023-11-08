@@ -1,7 +1,7 @@
 function displayMyPosts(collection) {
     let cardTemplate = document.getElementById("my-posts-template")
 
-    db.collection(collection).where("status", "==", "Active")
+    db.collection(collection).where("location, "==", "1234 Bcit Lane")
         .get()
         .then(allBins=> {
             allBins.forEach(doc => {
