@@ -42,7 +42,7 @@
 //     });
 // }
 
-// This is the function that only shows active bins
+
 function displayAvailableBins(collection) {
     let cardTemplate = document.getElementById("available-bin-template")
 
