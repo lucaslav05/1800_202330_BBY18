@@ -55,11 +55,26 @@ displayBinInfo();
 
 
 
-import { doc, updateDoc } from "firebase/firestore";
 
-const ActiveRef = doc(db, "posts", "Inactive");
+var collectionName = "YOUR_COLLECTION_NAME";
 
-// Set the "status" to inactive
-await updateDoc(ActiveRef, {
-    status: true
-});
+    function updateStatusToInactive() {
+      // Replace 'YOUR_DOCUMENT_ID' with the actual document ID you want to update
+      var documentId = "YOUR_DOCUMENT_ID";
+
+      // Get a reference to the Firestore database
+      var db = firebase.firestore();
+
+      // Update the status from active to inactive
+      db.collection(collectionName).doc(documentId).update({
+        status: "Inactive"
+      })
+      .then(function() {
+        console.log("Status updated to Inactive.");
+      })
+      .catch(function(error) {
+        console.error("Error updating status: ", error);
+      });
+    }
+
+    document.querySelector("#yourButtonId").addEventListener("click", updateStatusToInactive);

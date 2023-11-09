@@ -21,11 +21,14 @@
 // addToFavourites();
 // viewOnMap();
 
+var USERID;
+
+
 function displayBinInfo() {
     let params = new URL(window.location.href);
     let ID = params.searchParams.get("docID");
     console.log(ID);
-
+    ID = "Al8brtXfuGA5yxHd9aGY";
     db.collection("posts")
         .doc(ID)
         .get()
@@ -74,12 +77,15 @@ function savePost() {
         if (user) {
             // User is signed in.
             // Do something for the user here. 
-            var desc = document.getElementById("description").value;
+            var desc = document.getElementById("bindetails").value;
+            desc = "This is my Save the turtles event.";
+            console.log(user.uid);
+            USERID = user.uid;
+            console.log(desc);
             db.collection("posts").add({
                 owner: user.uid,
                 description: desc,
-                last_updated: firebase.firestore.FieldValue
-                    .serverTimestamp() //current system time
+                last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
             }).then(doc => {
                 console.log("1. Post document added!");
                 console.log(doc.id);
@@ -119,9 +125,9 @@ function uploadPic(postDocID) {
                     // Now that the image is on Storage, we can go back to the
                     // post document, and update it with an "image" field
                     // that contains the url of where the picture is stored.
-                    db.collection("posts").doc(postDocID).collection("pictures").update({
-                            "image": url // Save the URL into users collection
-                            "owner": user.uid
+                    db.collection("posts").doc(postDocID).collection("pictures").add({
+                            "image": url, // Save the URL into users collection
+                            "owner": USERID
                         })
                          // AFTER .update is done
                         .then(function () {
@@ -136,4 +142,25 @@ function uploadPic(postDocID) {
         .catch((error) => {
              console.log("error uploading to cloud storage");
         })
+}
+
+//--------------------------------------------
+//saves the post ID for the user, in an array
+//--------------------------------------------
+function savePostIDforUser(postDocID) {
+    firebase.auth().onAuthStateChanged(user => {
+          console.log("user id is: " + user.uid);
+          console.log("postdoc id is: " + postDocID);
+          db.collection("users").doc(user.uid).update({
+                myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
+          })
+          .then(() =>{
+                console.log("5. Saved to user's document!");
+                                alert ("Post is complete!");
+                //window.location.href = "showposts.html";
+           })
+           .catch((error) => {
+                console.error("Error writing document: ", error);
+           });
+    })
 }
