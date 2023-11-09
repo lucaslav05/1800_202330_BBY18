@@ -28,7 +28,7 @@ function displayBinInfo() {
     let params = new URL(window.location.href);
     let ID = params.searchParams.get("docID");
     console.log(ID);
-    ID = "Al8brtXfuGA5yxHd9aGY";
+    // ID = "Al8brtXfuGA5yxHd9aGY";
     db.collection("posts")
         .doc(ID)
         .get()
