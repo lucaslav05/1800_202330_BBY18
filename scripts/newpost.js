@@ -30,6 +30,8 @@ function processForm(){
             description: description,
             status: "Active",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+        }).then(() => {
+            window.location.href="thankyou.html";
         });
 
     } );
