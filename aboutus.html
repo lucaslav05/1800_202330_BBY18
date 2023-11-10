@@ -29,11 +29,64 @@
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <style>
+        /* Font */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap');
+        * {
+            font-family: "Roboto", sans-serif;
+        }
 
+        /* Background Image */
+        body {
+            background-image: url('./src/imgs/wp8623049.webp'); /* Replace with your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: black;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Team Card Container */
+        .team-container {
+            display: flex;
+            flex-direction: column; /* Display vertically stacked cards */
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Team Member Card */
+        .team-member {
+            background-color: #f3f3f3; /* Light grey background */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            width: 70%; /* 70% of the screen width */
+            text-align: left; /* Align text to the left */
+            display: flex; /* Display content in a flex container */
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px; /* Add margin to the right for spacing */
+        }
+
+        /* Team Member Details */
+        .team-member-details {
+            flex-grow: 1; /* Allow details to grow and fill available space */
+        }
+
+        /* Links */
+        .social-links a {
+            text-decoration: none;
+            color: black;
+            margin: 10px;
+        }
+    </style>
 </head>
-
 <body>
-
 
 
     <!------------------------------>
@@ -43,7 +96,64 @@
 
     <nav id="navbarPlaceholder"></nav>
 
-    <button type="button" class="btn btn-primary btn-sm" id="aboutUs">About Us</button>
+    <h1 style="text-align: center;color: #f3f3f3;">Our Team</h1>
+    <div class="team-container">
+        <!-- Team Member 1 -->
+        <div class="team-member">
+            <img src="team-member-1.jpg" alt="Team Member 1">
+            <div class="team-member-details">
+                <h2>Dongharn Yi</h2>
+                <p>Software Engineer</p>
+                <p>Brief Description: John is a skilled software engineer with a passion for creating innovative solutions. He has been a key contributor to our projects and ensures the highest quality in our software.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/johndoe" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/johndoe" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-member">
+            <img src="team-member-2.jpg" alt="Team Member 2">
+            <div class="team-member-details">
+                <h2>Lucas Laviolette</h2>
+                <p>Web Designer</p>
+                <p>Brief Description: Jane is a talented web designer with a creative flair. She specializes in crafting user-friendly and visually appealing web interfaces that leave a lasting impression.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/janesmith" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/janesmith" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-member">
+            <img src="team-member-3.jpg" alt="Team Member 3">
+            <div class="team-member-details">
+                <h2>Jaskirat Jhatu</h2>
+                <p>Data Scientist</p>
+                <p>Brief Description: Mike is a data scientist with a knack for analyzing complex data sets. He plays a pivotal role in our data-driven decision-making processes.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mikejohnson" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/mikejohnson" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-member">
+            <img src="team-member-4.jpg" alt="Team Member 4">
+            <div class="team-member-details">
+                <h2>Grace Olivia</h2>
+                <p>UI/UX Designer</p>
+                <p>Brief Description: Sarah is a UI/UX designer who specializes in creating intuitive and user-centered designs. She ensures our products provide the best user experience.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sarahbrown" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/sarahbrown" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer id="footerPlaceholder"></footer>
 
