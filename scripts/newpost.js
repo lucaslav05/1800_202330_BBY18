@@ -33,14 +33,11 @@ function processForm(){
 
         }) .then((docRef) => {
             console.log("post id" + docRef.id);
-            
             var postID = docRef.id;    //get the postID
 
             firebase.auth().onAuthStateChanged(user => {
                 console.log("UserId " + user.uid);
-
                 let userID = user.uid;  //get the userID
-
                 db.collection("users").doc(userID).get()
                 .then((userDoc) => {
                     console.log("the post id" + postID)
@@ -49,20 +46,19 @@ function processForm(){
                     console.log("array " + postArray)
                     db.collection("users").doc(userID).set(
                         {"myposts": postArray}, {merge: true}   // set myposts to postArray
-                    )
+                    ).then(() => {
+                        window.location.href="thankyou.html";
+                    });
                     
-                })
+                });
              
-            })
+            });
  
-        }) 
+        }) ;
 
-} ) 
+} ); 
 
 }
 processForm();
 
 
-// .then(() => {
-//     window.location.href="thankyou.html";
-// });
