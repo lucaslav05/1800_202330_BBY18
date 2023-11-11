@@ -30,10 +30,39 @@ function processForm(){
             description: description,
             status: "Active",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-        }).then(() => {
-            window.location.href="thankyou.html";
-        });
 
-    } );
-} 
+        }) .then((docRef) => {
+            console.log("post id" + docRef.id);
+            
+            var postID = docRef.id;    //get the postID
+
+            firebase.auth().onAuthStateChanged(user => {
+                console.log("UserId " + user.uid);
+
+                let userID = user.uid;  //get the userID
+
+                db.collection("users").doc(userID).get()
+                .then((userDoc) => {
+                    console.log("the post id" + postID)
+                    postArray = userDoc.data().myposts; //create an array that is the same as user's myposts array
+                    postArray.push(postID);  // add the postId to postArray
+                    console.log("array " + postArray)
+                    db.collection("users").doc(userID).set(
+                        {"myposts": postArray}, {merge: true}   // set myposts to postArray
+                    )
+                    
+                })
+             
+            })
+ 
+        }) 
+
+} ) 
+
+}
 processForm();
+
+
+// .then(() => {
+//     window.location.href="thankyou.html";
+// });
