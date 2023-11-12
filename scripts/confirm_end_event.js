@@ -28,4 +28,4 @@ signInSuccessWithAuthResult: function (authResult, redirectUrl) {
         return true;
     }
         return false;
-    },
+    }

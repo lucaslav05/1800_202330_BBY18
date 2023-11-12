@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Macondo&display=swap');
+div{
+  font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
 
 .Bins{
     display: flex;
