@@ -67,19 +67,19 @@
 
     <!--Title and favourites button-->
     <div class="d-flex justify-content-between">
-      <h3 id="bintitle">Bin Title</h3>
+      <h3 id="myPostTitle">Bin Title</h3>
     </div>
 
     <!--End event button-->
 
   <div class="d-grid gap-2 d-flex justify-content-between-py-3">
     <button type="button" class="btn btn-info btn-lg gap-3">
-      <a href="confirm_end_event.html"> End Event</a></button>
+      <a href="#" id="endEvent"> End Event</a></button>
 </div>
 
     <!--Location and view on map button-->
     <div id="location-container" class="d-flex justify-content-between py-3">
-      <p><b>Location: </b> <span id="binlocation"> 123 Street Name</span></p>
+      <p><b>Location: </b> <span id="myPostLocation"> 123 Street Name</span></p>
     </div>
 
 
@@ -88,12 +88,12 @@
 
     <!--Item type-->
     <div id="itemtype-container" class="d-flex justify-content-start py-3">
-      <p><b>Item Type: </b> <span id="binitemtype"> Recycling</span></p>
+      <p><b>Item Type: </b> <span id="myPostItemType"> Recycling</span></p>
     </div>
 
     <!--Availability-->
     <div id="availability-container" class="d-flex justify-content-start py-3">
-      <p><b>End Date: </b> <span id="binend"> Oct 7</span></p>
+      <p><b>End Date: </b> <span id="myPostEnd"> Oct 7</span></p>
     </div>
 
     <!--Image and additional details-->
@@ -102,7 +102,7 @@
       <!-- image is under creative commons license -->
 
       <div id="details-container">
-        <p><b>Description: </b> <span id="bindetails"> Here are some additional details</span></p>
+        <p><b>Description: </b> <span id="myPostDescription"> Here are some additional details</span></p>
       </div>
 
     </div>
@@ -154,10 +154,11 @@
 
   <!-- Link to scripts of your own -->
   <script src="./scripts/script.js"></script>
-  <script src="./scripts/experimentalbins.js"></script>
+  <!-- <script src="./scripts/experimentalbins.js"></script> -->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/viewmyposts.js"></script>
 
     
 
