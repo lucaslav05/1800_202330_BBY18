@@ -5,9 +5,9 @@ function binExpiry(){
     db.collection("posts").get()
         .then(allBins => {
             allBins.forEach(doc => {
-                let binDate = doc.data().enddate;
+                let binDate = new Date(doc.data().enddate);
 
-                if (binDate > currentDate){
+                if (currentDate > binDate){
                     db.collection("posts").doc(doc.id).update({status: "Inactive"});
                 }
             });
