@@ -28,11 +28,11 @@ displayMyPost();
 var collectionName = "posts";
 
     function updateStatusToInactive() {
-      // Replace 'YOUR_DOCUMENT_ID' with the actual document ID you want to update
+      
+      // Get the post ID
       let params = new URL(window.location.href);
       let postID = params.searchParams.get("docID");
 
-      // Get a reference to the Firestore database
       var db = firebase.firestore();
 
       // Update the status from active to inactive
