@@ -29,7 +29,7 @@ function processForm(){
             type: type,
             description: description,
             status: "Active",
-            userfaves: [],
+            favedByUser: [],
             last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
 
         }) .then((docRef) => {
