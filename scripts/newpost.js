@@ -10,6 +10,7 @@ function processForm() {
         let placeCoord = localStorage.getItem("place_coord");
         let [longitude, latitude] = placeCoord.split(",").map(coord => parseFloat(coord.trim()));
         let coordinates = new firebase.firestore.GeoPoint(latitude, longitude);
+        let binLocation = localStorage.getItem("place_name");
 
 
         //Get the radio button that was pressed
@@ -35,7 +36,8 @@ function processForm() {
             status: "Active",
             favedByUser: [],
             last_updated: firebase.firestore.FieldValue.serverTimestamp(),  //current system time
-            image: null
+            image: null,
+            location: binLocation
 
         }).then((docRef) => {
             console.log("post id" + docRef.id);
