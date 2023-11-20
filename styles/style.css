@@ -24,3 +24,14 @@ a{text-decoration: none; color: #333;}
 h1{text-align: center;
 margin-top: 15px;}
 .postButton, a{color: white;}
+
+.main-btn-collection button{
+  width: 19rem;
+  margin-inline: auto;
+}
+
+@media (max-width:800px){
+  .main-btn-collection button{
+    width: 80%;
+  }
+}
