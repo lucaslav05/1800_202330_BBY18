@@ -70,7 +70,7 @@ function processForm() {
 
 // Function to handle image upload
 function handleImageUpload(postID) {
-    var storageRef = storage.ref("images/" + postID + ".jpg");
+    var storageRef = storage.ref("images/*" + postID + ".jpg");
     var fileInput = document.getElementById("mypic-input");
     var image = document.getElementById("mypic-goes-here");
 
@@ -136,7 +136,6 @@ function placeGeocoder() {
 }
 
 placeGeocoder();
-
 
 
 
