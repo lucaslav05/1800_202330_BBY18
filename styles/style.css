@@ -24,3 +24,10 @@ a{text-decoration: none; color: #333;}
 h1{text-align: center;
 margin-top: 15px;}
 .postButton, a{color: white;}
+
+#filtered-bins-container,
+    #available-bins-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
