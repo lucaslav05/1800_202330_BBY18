@@ -55,14 +55,14 @@ function updateStatusToInactive() {
 
     // Go to the confirm end event page
     .then(() => {
-      window.location.href = "confirm_end_event.html";
+      window.location.reload();
     })
     .catch(function (error) {
       console.error("Error updating status: ", error);
     });
 }
 
-document.querySelector("#endEvent").addEventListener("click", updateStatusToInactive);
+document.querySelector("#confirmEndButton").addEventListener("click", updateStatusToInactive);
 
 // This function displays an alert prompting the user to confirm that they want to delete their post
 function displayConfirmDelete() {
@@ -72,6 +72,14 @@ function displayConfirmDelete() {
 // This function hides the alert prompting the user to confirm they want to delete their post
 function cancelDelete() {
   document.getElementById("confirmDelete").style.display = "none";  // Hide the alert message
+}
+
+function cancelEnd() {
+  document.getElementById("confirmEnd").style.display = "none";  // Hide the alert message
+}
+
+function displayConfirmEnd() {
+  document.getElementById("confirmEnd").style.display = "block";  // Display the alert message
 }
 
 
@@ -112,6 +120,8 @@ function confirmDelete() {
           // Delete the post from Firestore
           db.collection("posts").doc(postID).delete();
           console.log("post was deleted!");
+        }).then(() => {
+          window.location.href = "confirm_end_event.html";
         });
       });
   });

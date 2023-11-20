@@ -75,7 +75,7 @@
     <!--End event button-->
 
     <div class="d-grid gap-2 d-flex justify-content-between-py-3">
-      <button type="button" class="btn btn-info btn-lg gap-3">
+      <button type="button" class="btn btn-info btn-lg gap-3" onclick="displayConfirmEnd()">
         <a href="#" id="endEvent"> End Event</a></button>
       <button type="button" class="btn btn-info btn-lg gap-3" onclick="displayConfirmDelete()"> <a href="#" id="deletePost"> Delete Post</a></button>
     </div>
@@ -85,6 +85,13 @@
       By deleting your post, you will not be able to view it anymore. Click confirm delete if you are sure you want to delet your post.
       <button type="button" id="cancelDeleteButton" class="my-2" onclick="cancelDelete()">Cancel</button>
       <button type="button" id="confirmDeleteButton" class="my-2" onclick="confirmDelete()">Confirm Delete</button>
+    </div>
+
+    <div class="alert alert-warning alert-dismissible fade show my-3" role="alert" id="confirmEnd"
+      style="display:none;">
+      By ending your event, the status will be changed to Inactive and others will not be able to view your bin.
+      <button type="button" id="cancelEndButton" class="my-2" onclick="cancelEnd()">Cancel</button>
+      <button type="button" id="confirmEndButton" class="my-2" onclick="confirmEnd()">Confirm End</button>
     </div>
 
     <!--Location and view on map button-->
@@ -154,6 +161,8 @@
 
 
   </div>
+
+  <div class="py-3"></div>
 
 
   <!--Link to footer here-->
