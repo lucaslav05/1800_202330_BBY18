@@ -62,7 +62,9 @@ function displayMyPost(postID){
         var title = postDoc.data().title;
         var location = postDoc.data().location;
         var type = postDoc.data().type;
+        var status = postDoc.data().status;
         var docID = postDoc.id;
+        var image = postDoc.data().image; 
 
         // create a new card
         let newCard = cardTemplate.content.cloneNode(true);
@@ -71,6 +73,8 @@ function displayMyPost(postID){
         newCard.querySelector("#my-post-title").innerHTML = title;
         newCard.querySelector("#my-post-location").innerHTML = location;
         newCard.querySelector("#my-post-item").innerHTML = type;
+        newCard.querySelector("#my-post-status").innerHTML = status;
+        newCard.querySelector("#my-post-status").src = image;
         newCard.querySelector('#view-my-post-details').href = "mybinsinfo.html?docID="+postID;
         
         // display the card
