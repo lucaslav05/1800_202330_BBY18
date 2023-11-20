@@ -4,9 +4,12 @@ function processForm(){
         var postRef = db.collection("posts");
 
         let title = document.getElementById("title").value;
-        let location = document.getElementById("address").value;
         let enddate = document.getElementById("endDate").value;
         let description = document.getElementById("description").value;
+        let placeCoord = localStorage.getItem("place_coord");
+        let [longitude, latitude] = placeCoord.split(",").map(coord => parseFloat(coord.trim()));
+        let coordinates = new firebase.firestore.GeoPoint(latitude, longitude);
+
 
         //Get the radio button that was pressed
         let type = "n/a";
@@ -23,13 +26,13 @@ function processForm(){
         }
 
         postRef.add({
-            title:  title,
-            location: location,  
+            title:  title, 
+            coordinates: coordinates,
             enddate: enddate,
             type: type,
             description: description,
             status: "Active",
-            last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+            last_updated: firebase.firestore.FieldValue.serverTimestamp(),  //current system time
 
         }) .then((docRef) => {
             console.log("post id" + docRef.id);
@@ -60,5 +63,41 @@ function processForm(){
 
 }
 processForm();
+
+function placeGeocoder() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhbWNoZW4zIiwiYSI6ImNsMGZyNWRtZzB2angzanBjcHVkNTQ2YncifQ.fTdfEXaQ70WoIFLZ2QaRmQ';
+    const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        types: 'place,postcode,locality,neighborhood,address',
+        placeholder: 'Enter address',
+        minLength: 3, // Minimum number of characters before a search is performed
+    });
+
+    geocoder.addTo('#geocoder');
+
+    const results = document.getElementById('result');
+
+    geocoder.on('result', (e) => {
+        var jsondata = JSON.stringify(e.result, null, 2);
+        var data = JSON.parse(jsondata);
+        console.log(data);
+        var place_name = data["place_name"];
+        var place_coord = data["geometry"]["coordinates"];
+        results.innerText = place_name + " " + place_coord;
+
+        // Save geocoded coordinates to local storage
+        localStorage.setItem("place_name", place_name);
+        localStorage.setItem("place_coord", place_coord);
+    });
+
+    geocoder.on('clear', () => {
+        results.innerText = '';
+    });
+}
+
+placeGeocoder();
+
+
+
 
 
