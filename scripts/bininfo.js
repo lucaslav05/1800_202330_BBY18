@@ -78,7 +78,7 @@ function savePost() {
             // User is signed in.
             // Do something for the user here. 
             var desc = document.getElementById("bindetails").value;
-            desc = "This is my Save the turtles event.";
+            desc = "Everyone is wwelcom.";
             console.log(user.uid);
             USERID = user.uid;
             console.log(desc);
