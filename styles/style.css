@@ -1,33 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Macondo&display=swap');
-div{
+
+div {
   font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
 
-.Bins{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-    margin-top: 25px;
+.Bins {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 25px;
 }
-a{text-decoration: none; color: #333;}
-.refresh{
-    background-color: rgb(0, 200, 255);
-    border: none;
-  }
 
-  .goback{
-    background-color: rgb(0, 200, 255);
-    border: none;
-  }  
-h1{text-align: center;
-margin-top: 15px;}
-.postButton, a{color: white;}
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.refresh {
+  background-color: rgb(0, 200, 255);
+  border: none;
+}
+
+.goback {
+  background-color: rgb(0, 200, 255);
+  border: none;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.postButton,
+a {
+  color: white;
+}
 
 #filtered-bins-container,
-    #available-bins-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+#available-bins-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#my-posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  margin: 10px; /* Adjust margin as needed */
+}
