@@ -112,11 +112,14 @@ function confirmDelete() {
           }
         }
 
+        
+
         // Use the new array as the user's new myPosts array
         db.collection("users").doc(userID).set(
           { "myposts": newPostArray }, { merge: true }   // set myposts to postArray
         ).then(() => {
 
+          // removeFromFavourites(postID);
           // Delete the post from Firestore
           db.collection("posts").doc(postID).delete();
           console.log("post was deleted!");
@@ -126,4 +129,33 @@ function confirmDelete() {
       });
   });
 
+}
+
+// Removes the specified postId from from all the favourite arrays of users who have favourited the post
+function removeFromFavourites(postID){
+  db.collection("posts").doc(postID).get()
+  .then((postDoc) => {
+    let users = postDoc.data().favedByUser;
+
+    for(i = 0; i < users.length; i++){
+      db.collection("users").doc(users[i]).get()
+      .then((userDoc) => {
+        let currentFaves = userDoc.data().favourites;
+        let newFaves = [];
+
+        for (let i = 0; i < currentFaves.length; i++) {
+          console.log("id: " + currentFaves[i]);
+          if (currentFaves[i] != postID) {
+
+            newFaves.push(currentFaves[i]);
+            console.log("new array: " + newFaves)
+          }
+        }
+
+        db.collection("users").doc(userID).set(
+          { "myposts": newPostArray }, { merge: true }
+        )
+      })
+    }
+  })
 }
