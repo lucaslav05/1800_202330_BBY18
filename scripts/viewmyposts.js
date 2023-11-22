@@ -117,50 +117,82 @@ function confirmDelete() {
         // Use the new array as the user's new myPosts array
         db.collection("users").doc(userID).set(
           { "myposts": newPostArray }, { merge: true }   // set myposts to postArray
-        ).then(() => {
-          console.log("remove favourites called");
-          // removeFromFavourites(postID)
-            // Delete the post from Firestore
-          db.collection("posts").doc(postID).delete();
-          console.log("post was deleted!");
-          
-          
-        }).then(() => {
-          window.location.href = "confirm_end_event.html";
-        });
-      });
-  });
-
-}
+        )
+      }).then(() => {
+        console.log("remove favourites called");
+        // removeFromFavourites();
+          // Delete the post from Firestore
+        db.collection("posts").doc(postID).delete();
+        console.log("post was deleted!");
+        
+      })
+      // }).then(() => {
+      //   window.location.href = "confirm_end_event.html";
+      // });  this one won't delete the post
+    })
+    // .then(() =>{
+    //   window.location.href = "confirm_end_event.html";
+    // }) this one won't go to a new page
+    
+  }
 
 // Removes the specified postId from from all the favourite arrays of users who have favourited the post
-function removeFromFavourites(postID){
+function removeFromFavourites(){
   console.log("remove favourites accessed");
+
+  let params = new URL(window.location.href);
+  let postID = params.searchParams.get("docID");
+  console.log("post to be deleted: " + postID);
+
+  // Get the post
   db.collection("posts").doc(postID).get()
   .then((postDoc) => {
     console.log(postDoc);
+
+    // Get the array "favedByUser"
     let users = postDoc.data().favedByUser;
     console.log("users array: " + users);
 
-    for(i = 0; i < users.length; i++){
+    // For each user
+    var i = 0;
+    while(i < users.length){
+      console.log("i is equal to" + i);
+      let currentUser = users[i];
       db.collection("users").doc(users[i]).get()
       .then((userDoc) => {
+
+        // Get that users favourites
         let currentFaves = userDoc.data().favourites;
         let newFaves = [];
 
-        for (let i = 0; i < currentFaves.length; i++) {
-          console.log("id: " + currentFaves[i]);
-          if (currentFaves[i] != postID) {
+        // Make a new array that is all the favourites except the one being deleted
+        for (let j = 0; j < currentFaves.length; j++) {
+          console.log("id: " + currentFaves[j]);
+          if (currentFaves[j] != postID) {
 
-            newFaves.push(currentFaves[i]);
+            newFaves.push(currentFaves[j]);
             console.log("new array: " + newFaves)
           }
         }
 
-        db.collection("users").doc(users[i]).set(
-          { "myposts": newFaves }, { merge: true }
+        console.log("current user" + currentUser);
+
+        // Set favourites to be newFaves
+        db.collection("users").doc(currentUser).set(
+          
+          { "favourites": newFaves }, { merge: true }
         )
+        
       })
+      console.log("users check: " + users);
+      i += 1;
+      console.log("now i is equal to:" + i);
     }
+    
+      confirmDelete();
+    
   })
 }
+
+//THOUGHTS IN MY BRAIN: have the confirm delete button call the remove from favourites and then, put a .then at the end of remove from favourites
+// and call the confirm delete function --> this way you can ensure that the post has been removed from favourites before deleting
