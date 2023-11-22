@@ -16,13 +16,17 @@ auth.onAuthStateChanged(user => {
             .then((doc) => {
                 if (doc.exists) {
                     const userData = doc.data();
-                    if (userData && userData.favourites && userData.favourites.includes(binID)) {
-                        const favouritesWrap = document.getElementById("favouritesWrap");
-                        favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"removeFromFavorites()\">Remove from favourites</button>";
-                    } else {
-                        console.log("binID not found in user's favourites");
-                        favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"addToFavorites()\">Add to favourites</button>";
+                    try {
+                        if (userData && userData.favourites && userData.favourites.includes(binID)) {
+                            const favouritesWrap = document.getElementById("favouritesWrap");
+                            favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"removeFromFavorites()\">Remove from favourites</button>";
+                        } else {
+                            console.log("binID not found in user's favourites");
+                            favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"addToFavorites()\">Add to favourites</button>";
+                        }
+                    } catch (error) {
                     }
+                    
                 } else {
                     console.log("User document not found");
                 }
