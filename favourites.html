@@ -61,6 +61,13 @@
       <h3><img src="images/fav_bins_image.png" class="img-thumbnail" alt="favourite bin image"></a></h3>
 
 
+      <div id="my-favourites-container" class="row row-cols-auto">
+
+    
+
+
+      </div>
+
       <!-- <div class="card-body">
           <div class="d-flex justify-content-between">
             <h5 class="card-title">Example Bin</h5>
@@ -79,21 +86,22 @@
           
           
         </div> -->
-      <div class="card" style="width: 25rem;">
-        <img src="https://proslat.ca/cdn/shop/products/65003_B_grande.jpg?v=1601561956" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bin 1</h5>
-          <p class="card-text"><b>Location:</b> 123 Street Name<br>
-            <b>Item Type:</b> Bottles / Cans
-          </p>
-          <a href="bininfo.html" class="btn">View Details</a>
-        </div>
-      </div>
-
-    </div>
-
-
-  </div>
+        <template id="my-favourites-template">
+          <div class="card py-2 mx-2">
+            <img class="card-image card-img-top" src=" ..." alt="...">
+            <div class="card-header" id="my-favourites-status">
+              My favourites
+            </div>
+            <div class="card-body ">
+              <h5 class="card-title" id="my-favourites-title">Title</h5>
+              <p class="card-text"><b>Location:</b> <span id="my-favourites-location">123 burnaby</span></p>
+              <p class="card-text"><b>Items Accepted:</b> <span id="my-favourites-item">plastic</span></p>
+              <a href="#" class="btn btn-primary" id="view-my-favourites-details">View Details</a>
+            </div>
+          </div>
+      
+        </template>
+      
 
 
   <!--Link to footer here-->
@@ -106,7 +114,8 @@
   <!-- <script src="./scripts/script.js"></script> -->
   <script src="./scripts/firebaseAPI_TEAM99.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/fav.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
 </body>
 
