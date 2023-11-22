@@ -67,6 +67,7 @@ function listenFileSelect() {
           ImageFile = e.target.files[0];   //Global variable
           var blob = URL.createObjectURL(ImageFile);
           image.src = blob; // Display this image
+          console.log("This is the blob" + blob);
       })
 }
 listenFileSelect();
@@ -81,10 +82,10 @@ function savePost() {
             // Do something for the user here. 
             console.log(user.uid);
             USERID = user.uid;
-
             db.collection("posts").doc(postID).collection("pictures").add({
                 owner: user.uid,
-                last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
+                last_updated: firebase.firestore.FieldValue.serverTimestamp(), //current system time
+                
             }).then(doc => {
                 console.log("1. Post document added!");
                 console.log(doc.id);
@@ -125,7 +126,7 @@ function uploadPic(postDocID) {
                     // post document, and update it with an "image" field
                     // that contains the url of where the picture is stored.
                     db.collection("posts").doc(postDocID).collection("pictures").add({
-                            "image": url, // Save the URL into pictures subcollection of post document
+                            "image": url, // Save the URL into pictures storage
                             "owner": USERID
                         })
                          // AFTER .update is done
@@ -163,3 +164,42 @@ function uploadPic(postDocID) {
 //            });
 //     })
 // }
+
+//-------------------------------------------------
+// this function shows ALL the pictures from the 
+// stand alone pictures subcollection
+//------------------------------------------------
+function showPictures() {
+    console.log("show pciture");
+    let params = new URL(window.location.href);
+    let postID = params.searchParams.get("docID");
+    db.collection("posts").doc(postID).collection("pictures")
+           //.orderBy(...)       //optional ordering
+           //.limit(3)           //optional limit
+           .get()
+           .then(snap => {
+               snap.forEach(doc => {
+                displayPictures(doc);
+               })
+           })
+}
+showPictures();
+
+//------------------------------------------------------------
+// this function displays ONE card, with information
+// from the post document extracted (name, description, image)
+//------------------------------------------------------------
+function displayPictures(doc) {
+    console.log("display image");
+
+       var image = storage.ref("images/" + doc.id + ".jpg");
+       ; //the field that contains the URL 
+    
+
+       //clone the new card
+       let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
+       //populate with image
+       newcard.querySelector('.card-image').src = image;
+       //append to the posts
+       document.getElementById("pictureCardTemplate").append(newcard);
+}
