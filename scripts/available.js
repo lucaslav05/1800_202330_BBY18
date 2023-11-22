@@ -90,9 +90,9 @@ applyItemFilter();
 // function that accepts a string, itemType, as a parameter and displays only the posts with that item type
 function displayFilteredBins(itemType) {
     let cardTemplate = document.getElementById("available-bin-template")
-    document.getElementById("filtered-bins-container").style.display = "auto";  // Hide the alert message
-    document.getElementById("removeFilter").style.display = "block";  // Hide the alert message
-    document.getElementById("available-bins-container").style.display = "none";  // Hide the alert message
+    document.getElementById("filtered-bins-container").style.display = "auto";  // Display filtered bins container
+    document.getElementById("removeFilter").style.display = "block";  // Display remove filter button
+    document.getElementById("available-bins-container").style.display = "none";  // Hide the available bins container
 
     document.getElementById("filtered-bins-container").innerHTML = "";
 

@@ -36,7 +36,7 @@ displayMyPost();
 var collectionName = "posts";
 
 // This function updates the status of a post to "Inactive"
-// The function is called when a user clicks "End Event"
+// The function is called when a user clicks "Confirm End"
 function updateStatusToInactive() {
 
   // Get the post ID
@@ -118,11 +118,13 @@ function confirmDelete() {
         db.collection("users").doc(userID).set(
           { "myposts": newPostArray }, { merge: true }   // set myposts to postArray
         ).then(() => {
-
-          // removeFromFavourites(postID);
-          // Delete the post from Firestore
+          console.log("remove favourites called");
+          // removeFromFavourites(postID)
+            // Delete the post from Firestore
           db.collection("posts").doc(postID).delete();
           console.log("post was deleted!");
+          
+          
         }).then(() => {
           window.location.href = "confirm_end_event.html";
         });
@@ -133,9 +135,12 @@ function confirmDelete() {
 
 // Removes the specified postId from from all the favourite arrays of users who have favourited the post
 function removeFromFavourites(postID){
+  console.log("remove favourites accessed");
   db.collection("posts").doc(postID).get()
   .then((postDoc) => {
+    console.log(postDoc);
     let users = postDoc.data().favedByUser;
+    console.log("users array: " + users);
 
     for(i = 0; i < users.length; i++){
       db.collection("users").doc(users[i]).get()
@@ -152,8 +157,8 @@ function removeFromFavourites(postID){
           }
         }
 
-        db.collection("users").doc(userID).set(
-          { "myposts": newPostArray }, { merge: true }
+        db.collection("users").doc(users[i]).set(
+          { "myposts": newFaves }, { merge: true }
         )
       })
     }
