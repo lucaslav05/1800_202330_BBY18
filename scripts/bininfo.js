@@ -72,19 +72,18 @@ function listenFileSelect() {
 listenFileSelect();
 
 function savePost() {
+    let params = new URL(window.location.href);
+    let postID = params.searchParams.get("docID");
     alert ("SAVE POST is triggered");
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             // Do something for the user here. 
-            var desc = document.getElementById("bindetails").value;
-            desc = "Everyone is wwelcom.";
             console.log(user.uid);
             USERID = user.uid;
-            console.log(desc);
-            db.collection("posts").add({
+
+            db.collection("posts").doc(postID).collection("pictures").add({
                 owner: user.uid,
-                description: desc,
                 last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
             }).then(doc => {
                 console.log("1. Post document added!");
@@ -126,7 +125,7 @@ function uploadPic(postDocID) {
                     // post document, and update it with an "image" field
                     // that contains the url of where the picture is stored.
                     db.collection("posts").doc(postDocID).collection("pictures").add({
-                            "image": url, // Save the URL into users collection
+                            "image": url, // Save the URL into pictures subcollection of post document
                             "owner": USERID
                         })
                          // AFTER .update is done
@@ -135,7 +134,7 @@ function uploadPic(postDocID) {
                             // One last thing to do:
                             // save this postID into an array for the OWNER
                             // so we can show "my posts" in the future
-                            savePostIDforUser(postDocID);
+                            // savePostIDforUser(postDocID);
                         })
                 })
         })
@@ -147,20 +146,20 @@ function uploadPic(postDocID) {
 //--------------------------------------------
 //saves the post ID for the user, in an array
 //--------------------------------------------
-function savePostIDforUser(postDocID) {
-    firebase.auth().onAuthStateChanged(user => {
-          console.log("user id is: " + user.uid);
-          console.log("postdoc id is: " + postDocID);
-          db.collection("users").doc(user.uid).update({
-                myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
-          })
-          .then(() =>{
-                console.log("5. Saved to user's document!");
-                                alert ("Post is complete!");
-                //window.location.href = "showposts.html";
-           })
-           .catch((error) => {
-                console.error("Error writing document: ", error);
-           });
-    })
-}
+// function savePostIDforUser(postDocID) {
+//     firebase.auth().onAuthStateChanged(user => {
+//           console.log("user id is: " + user.uid);
+//           console.log("postdoc id is: " + postDocID);
+//           db.collection("users").doc(user.uid).update({
+//                 myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
+//           })
+//           .then(() =>{
+//                 console.log("5. Saved to user's document!");
+//                                 alert ("Post is complete!");
+//                 //window.location.href = "showposts.html";
+//            })
+//            .catch((error) => {
+//                 console.error("Error writing document: ", error);
+//            });
+//     })
+// }
