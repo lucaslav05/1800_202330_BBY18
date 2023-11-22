@@ -48,7 +48,7 @@ function addToFavorites() {
     }).catch(function (error) {
         console.log("Error adding new user: " + error);
     });
-    const favedByUserUnion = firebase.firestore.FieldValue.arrayUnion(userEmail + " ID: " + userID)
+    const favedByUserUnion = firebase.firestore.FieldValue.arrayUnion(userID)
     db.collection("posts").doc(binID).update({
         favedByUser: favedByUserUnion
     }).then(function () {
@@ -126,7 +126,7 @@ function displayFavourites(postID){
         newCard.querySelector("#my-favourites-title").innerHTML = title;
         newCard.querySelector("#my-favourites-location").innerHTML = location;
         newCard.querySelector("#my-favourites-item").innerHTML = type;
-        newCard.querySelector('#view-my-favourites-details').href = "mybinsinfo.html?docID="+postID;
+        newCard.querySelector('#view-my-favourites-details').href = "bininfo.html?docID="+postID;
         
         // display the card
         document.getElementById("my-favourites-container").append(newCard);
