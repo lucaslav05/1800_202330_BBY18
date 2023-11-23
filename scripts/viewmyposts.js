@@ -103,11 +103,11 @@ function confirmDelete() {
 
         // Create a new array that does not contain the deleted post's id
         let newPostArray = [];
-        for (let i = 0; i < postArray.length; i++) {
-          console.log("id: " + postArray[i]);
-          if (postArray[i] != postID) {
+        for (let k = 0; k < postArray.length; k++) {
+          console.log("id: " + postArray[k]);
+          if (postArray[k] != postID) {
 
-            newPostArray.push(postArray[i]);
+            newPostArray.push(postArray[k]);
             console.log("new array: " + newPostArray)
           }
         }
@@ -119,10 +119,13 @@ function confirmDelete() {
           { "myposts": newPostArray }, { merge: true }   // set myposts to postArray
         )
       }).then(() => {
-        console.log("remove favourites called");
+        
         // removeFromFavourites();
           // Delete the post from Firestore
-        db.collection("posts").doc(postID).delete();
+        db.collection("posts").doc(postID).delete()
+        .then(() => {
+          window.location.href = "confirm_end_event.html";
+        })
         console.log("post was deleted!");
         
       })
@@ -184,9 +187,9 @@ function removeFromFavourites(){
         )
         
       })
-      console.log("users check: " + users);
+      
       i += 1;
-      console.log("now i is equal to:" + i);
+      
     }
     
       confirmDelete();
