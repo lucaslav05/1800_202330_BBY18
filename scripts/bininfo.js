@@ -35,7 +35,9 @@ var USERID;
 
 function displayBinInfo() {
     let params = new URL(window.location.href);
-    let ID = params.searchParams.get("docID");
+    ID = params.searchParams.get("docID");
+
+
     console.log(ID);
     // ID = "Al8brtXfuGA5yxHd9aGY";
     db.collection("posts")
@@ -43,7 +45,7 @@ function displayBinInfo() {
         .get()
         .then(doc => {
             thisBin = doc.data();
-            
+
 
             binTitle = doc.data().title;
             binLocation = doc.data().location;
@@ -67,21 +69,21 @@ displayBinInfo();
 
 var ImageFile;
 function listenFileSelect() {
-      // listen for file selection
-      var fileInput = document.getElementById("mypic-input"); // pointer #1
-      const image = document.getElementById("mypic-goes-here"); // pointer #2
-
-      
-
-			// When a change happens to the File Chooser Input
-      fileInput.addEventListener('change', function (e) {
-          ImageFile = e.target.files[0];   //Global variable
-          var blob = URL.createObjectURL(ImageFile);
-          image.src = blob; // Display this image
-          console.log("This is the blob" + blob);
+    // listen for file selection
+    var fileInput = document.getElementById("mypic-input"); // pointer #1
+    const image = document.getElementById("mypic-goes-here"); // pointer #2
 
 
-      })
+
+    // When a change happens to the File Chooser Input
+    fileInput.addEventListener('change', function (e) {
+        ImageFile = e.target.files[0];   //Global variable
+        var blob = URL.createObjectURL(ImageFile);
+        image.src = blob; // Display this image
+        console.log("This is the blob" + blob);
+
+
+    })
 }
 listenFileSelect();
 
@@ -91,38 +93,39 @@ function savePost(postDocID) {
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
 
     storageRef.put(ImageFile)
-    .then(function () {
+        .then(function () {
 
-    
 
-    alert ("SAVE POST is triggered");
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // User is signed in.
-            // Do something for the user here. 
-            console.log(user.uid);
-            USERID = user.uid;
-            storageRef.getDownloadURL()
-                .then(function (imageURL) {
-                    var url = imageURL;
-            
-            console.log("this is url" + url);
-            db.collection("posts").doc(postID).collection("pictures").add({
-                owner: user.uid,
-                last_updated: firebase.firestore.FieldValue.serverTimestamp(), //current system time
-                image:url
-              
-            }).then(doc => {
-                console.log("1. Post document added!");
-                console.log(doc.id);
-                uploadPic(doc.id);
-            })});
-        } else {
-            // No user is signed in.
-                          console.log("Error, no user signed in");
-        }
-    });
-    });
+
+            alert("SAVE POST is triggered");
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    // Do something for the user here. 
+                    console.log(user.uid);
+                    USERID = user.uid;
+                    storageRef.getDownloadURL()
+                        .then(function (imageURL) {
+                            var url = imageURL;
+
+                            console.log("this is url" + url);
+                            db.collection("posts").doc(postID).collection("pictures").add({
+                                owner: user.uid,
+                                last_updated: firebase.firestore.FieldValue.serverTimestamp(), //current system time
+                                image: url
+
+                            }).then(doc => {
+                                console.log("1. Post document added!");
+                                console.log(doc.id);
+                                uploadPic(doc.id);
+                            })
+                        });
+                } else {
+                    // No user is signed in.
+                    console.log("Error, no user signed in");
+                }
+            });
+        });
 };
 
 //------------------------------------------------
@@ -139,13 +142,13 @@ function uploadPic(postDocID) {
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
 
     storageRef.put(ImageFile)   //global variable ImageFile
-       
-                   // AFTER .put() is done
+
+        // AFTER .put() is done
         .then(function () {
             console.log('2. Uploaded to Cloud Storage.');
             storageRef.getDownloadURL()
 
-                 // AFTER .getDownloadURL is done
+                // AFTER .getDownloadURL is done
                 .then(function (url) { // Get URL of the uploaded file
                     console.log("3. Got the download URL.");
 
@@ -156,18 +159,18 @@ function uploadPic(postDocID) {
                     //         "image": url, // Save the URL into pictures storage
                     //         "owner": USERID
                     //     })
-                         // AFTER .update is done
-                        // .then(function () {
-                            console.log('4. Added pic URL to Firestore.');
-                            // One last thing to do:
-                            // save this postID into an array for the OWNER
-                            // so we can show "my posts" in the future
-                            // savePostIDforUser(postDocID);
-                        })
+                    // AFTER .update is done
+                    // .then(function () {
+                    console.log('4. Added pic URL to Firestore.');
+                    // One last thing to do:
+                    // save this postID into an array for the OWNER
+                    // so we can show "my posts" in the future
+                    // savePostIDforUser(postDocID);
                 })
+        })
         // })
         .catch((error) => {
-             console.log("error uploading to cloud storage");
+            console.log("error uploading to cloud storage");
         })
 }
 
@@ -201,21 +204,21 @@ function showPictures() {
     let params = new URL(window.location.href);
     let postID = params.searchParams.get("docID");
     db.collection("posts").doc(postID).collection("pictures")
-           //.orderBy(...)       //optional ordering
-           //.limit(3)           //optional limit
-           .get()
-           .then(snap => {
-               snap.forEach(doc => {
+        //.orderBy(...)       //optional ordering
+        //.limit(3)           //optional limit
+        .get()
+        .then(snap => {
+            snap.forEach(doc => {
                 let image = doc.data().image;
                 let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
 
-                console.log("the doc!!!" + doc+ "image" + image);
+                console.log("the doc!!!" + doc + "image" + image);
                 newcard.querySelector('.card-image').src = image;
                 //append to the posts
                 document.getElementById("Gallery").append(newcard);
                 // displayPictures(doc);
-               })
-           })
+            })
+        })
 }
 showPictures();
 
@@ -231,16 +234,29 @@ function displayPictures(doc) {
     db.collection("posts").doc(postID).collection("pictures").doc(doc).get().then((pic) => {
         let image = pic.data().image;
         //clone the new card
-       let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
-       //populate with image
-       newcard.querySelector('#galleryImage').src = image;
-       //append to the posts
-       document.getElementById("Gallery").append(newcard);
+        let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
+        //populate with image
+        newcard.querySelector('#galleryImage').src = image;
+        //append to the posts
+        document.getElementById("Gallery").append(newcard);
     })
 
-    //    var image = storage.ref("images/" + doc.id + ".jpg");
-       ; //the field that contains the URL 
-    
+        //    var image = storage.ref("images/" + doc.id + ".jpg");
+        ; //the field that contains the URL 
 
-       
+
+
 }
+
+document.getElementById('viewOnMap').addEventListener('click', function () {
+    // set the ID in local storage
+    localStorage.setItem('id', ID);
+
+    // Check if ID is available
+    if (ID) {
+        // Redirect to the map.html page with the ID as a query parameter
+        window.location.href = 'map.html?docID=' + ID;
+    } else {
+        console.error('No docID found.');
+    }
+});

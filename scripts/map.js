@@ -1,4 +1,5 @@
 async function showMap() {
+
     // Initializes basic mapbox data
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhbWNoZW4zIiwiYSI6ImNsMGZyNWRtZzB2angzanBjcHVkNTQ2YncifQ.fTdfEXaQ70WoIFLZ2QaRmQ';
     const map = new mapboxgl.Map({
@@ -8,7 +9,6 @@ async function showMap() {
         zoom: 8.8 // Starting zoom
     });
 
-    // Add user controls to map (compass and zoom) to top left
     map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
     // Get user's location
@@ -19,32 +19,83 @@ async function showMap() {
         );
     });
 
-    // Add a marker for the user's location
-    const userLocationMarker = new mapboxgl.Marker()
-        .setLngLat(userLocation)
-        .addTo(map);
 
-    // Center the map on the user's location
-    map.flyTo({
-        center: userLocation
-    });
-
-    // Fetch posts from Firestore
-    const postsSnapshot = await db.collection("posts").get();
-
-    // Loop through each post and add a marker to the map
-    postsSnapshot.forEach(doc => {
-        const post = doc.data();
-        const postLocation = post.coordinates;
-
-        // Add a marker to the map at the post location
-        new mapboxgl.Marker({ color: 'red' })
-            .setLngLat([postLocation.longitude, postLocation.latitude])
+    map.on('load', () => {
+        // Add a marker for the user's location
+        const userLocationMarker = new mapboxgl.Marker()
+            .setLngLat(userLocation)
             .addTo(map);
+
+        // Center the map on the user's location
+        map.flyTo({
+            center: userLocation
+        });
+
+        addHikePin(map);
+
     });
+
 }
 
 showMap();
+
+function addHikePin(map) {
+    var ID = localStorage.getItem("id");
+    console.log(ID);
+
+    if (!ID) {
+        console.error("No Post found in local storage.");
+        return;
+    }
+
+    // READING information from "posts" collection in Firestore for the stored post ID
+    db.collection('posts').doc(ID).get().then(doc => {
+        if (doc.exists) {
+            // Extract coordinates of the place
+            const coordinates = doc.data().coordinates;
+            console.log(coordinates);
+
+            // Create a feature for the specified post
+            const feature = {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [coordinates.longitude, coordinates.latitude] // Updated line
+                }
+            };
+
+            // Adds the feature (in our case, pin) to the map
+            map.addSource('place', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [feature]
+                }
+            });
+
+            // Creates a layer above the map displaying the pin
+            // Add a layer showing the place.
+            map.addLayer({
+                'id': 'place',
+                'type': 'circle', // what the pin looks like
+                'source': 'place',
+                'paint': {   // customize colour and size
+                    'circle-color': '#4264fb',
+                    'circle-radius': 6,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff'
+                }
+            });
+
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(error => {
+        console.log("Error getting document:", error);
+    });
+}
+
+
 
 
 
