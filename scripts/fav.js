@@ -16,13 +16,17 @@ auth.onAuthStateChanged(user => {
             .then((doc) => {
                 if (doc.exists) {
                     const userData = doc.data();
-                    if (userData && userData.favourites && userData.favourites.includes(binID)) {
-                        const favouritesWrap = document.getElementById("favouritesWrap");
-                        favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"removeFromFavorites()\">Remove from favourites</button>";
-                    } else {
-                        console.log("binID not found in user's favourites");
-                        favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"addToFavorites()\">Add to favourites</button>";
+                    try {
+                        if (userData && userData.favourites && userData.favourites.includes(binID)) {
+                            const favouritesWrap = document.getElementById("favouritesWrap");
+                            favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"removeFromFavorites()\">Remove from favourites</button>";
+                        } else {
+                            console.log("binID not found in user's favourites");
+                            favouritesWrap.innerHTML = "<button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"favouritesBtn\" onclick=\"addToFavorites()\">Add to favourites</button>";
+                        }
+                    } catch (error) {
                     }
+                    
                 } else {
                     console.log("User document not found");
                 }
@@ -44,7 +48,7 @@ function addToFavorites() {
     }).catch(function (error) {
         console.log("Error adding new user: " + error);
     });
-    const favedByUserUnion = firebase.firestore.FieldValue.arrayUnion(userEmail + " ID: " + userID)
+    const favedByUserUnion = firebase.firestore.FieldValue.arrayUnion(userID)
     db.collection("posts").doc(binID).update({
         favedByUser: favedByUserUnion
     }).then(function () {
@@ -73,3 +77,62 @@ function removeFromFavorites() {
         console.log("Error adding new user: " + error);
     });
 }
+
+
+
+function getMyFavourites() {
+
+    
+    firebase.auth().onAuthStateChanged(user => {
+        let userID = user.uid;  //get the current user's ID
+        console.log(userID);
+        db.collection("users").doc(userID).get()  // access the user's document in firestore
+                .then((userDoc) => {
+                    
+                    postArray = userDoc.data().favourites; // access the user's post array and save it in variable postArray
+                    console.log(postArray);
+                    let i = 0;
+                    while (i < postArray.length){ //iterate through all the posts in myposts
+                        console.log(postArray[i]);
+                        displayFavourites(postArray[i]); // call on displayMyPost to display each post
+                        i++;
+                    }
+
+                    // if the user has not made any posts
+                    if (i == 0){
+                        console.log("you have not made any posts");
+                    }
+                })
+
+    });
+}
+
+function displayFavourites(postID){
+    let cardTemplate = document.getElementById("my-favourites-template");
+    
+    db.collection("posts").doc(postID).get()  // access the post
+    .then((postDoc) => {
+
+        // get the title, location, and item type of the post
+        var title = postDoc.data().title;
+        var location = postDoc.data().location;
+        var type = postDoc.data().type;
+        var docID = postDoc.id; 
+
+        // create a new card
+        let newCard = cardTemplate.content.cloneNode(true);
+        
+        //put the title, location and item type in the card
+        newCard.querySelector("#my-favourites-title").innerHTML = title;
+        newCard.querySelector("#my-favourites-location").innerHTML = location;
+        newCard.querySelector("#my-favourites-item").innerHTML = type;
+        newCard.querySelector('#view-my-favourites-details').href = "bininfo.html?docID="+postID;
+        
+        // display the card
+        document.getElementById("my-favourites-container").append(newCard);
+
+    })
+}
+
+getMyFavourites();
+

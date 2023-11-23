@@ -4,21 +4,24 @@ div {
   font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
-body {
+/** base colour setting*/
+body{
   background-color: #DADDD8;
 }
 
-.btn {
+/** button colour and font setting*/
+.btn{
   background-color: #4B5842;
   color: white;
 }
 
-
-.navbar {
+/** navbar colour setting*/
+.navbar{
   background-color: #8FB339;
 }
 
-.fixed-bottom {
+/** footer colour setting*/
+.fixed-bottom{
   background-color: #B7CE63;
 }
 
@@ -108,7 +111,26 @@ a {
     }
   }
 
-  .img-thumbnail {
-    margin: 0px;
-    padding: 0px;
-  }
+/**logo reduce whitespace around image*/
+.img-thumbnail{
+  margin:0px;
+  padding:0px;
+  border: none;
+}
+
+/**colour for cards on aboutus.html*/
+.team-member{
+  background-color: #C7D59F;
+}
+
+/**colour for card heading on available.html and mybins.html*/
+.card-header{
+  background-color: #C7D59F;
+}
+
+.card{
+  width: 100%;
+
+}
+
+
