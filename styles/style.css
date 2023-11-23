@@ -4,6 +4,23 @@ div {
   font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
+body {
+  background-color: #DADDD8;
+}
+
+.btn {
+  background-color: #4B5842;
+  color: white;
+}
+
+
+.navbar {
+  background-color: #8FB339;
+}
+
+.fixed-bottom {
+  background-color: #B7CE63;
+}
 
 .Bins {
   display: flex;
@@ -52,5 +69,46 @@ a {
 }
 
 .card {
-  margin: 10px; /* Adjust margin as needed */
+  margin: 10px;
 }
+
+  /* Adjust margin as needed */
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .refresh {
+    background-color: #B7CE63;
+    border: none;
+  }
+
+  .goback {
+    background-color: #B7CE63;
+    border: none;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .postButton, a {
+    color: white;
+  }
+
+  .main-btn-collection button {
+    width: 19rem;
+    margin-inline: auto;
+  }
+
+  @media (max-width:800px) {
+    .main-btn-collection button {
+      width: 80%;
+    }
+  }
+
+  .img-thumbnail {
+    margin: 0px;
+    padding: 0px;
+  }
