@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Macondo&display=swap');
-div{
+
+div {
   font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
@@ -24,43 +25,97 @@ body{
   background-color: #B7CE63;
 }
 
-.Bins{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-    margin-top: 25px;
+.Bins {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 25px;
 }
-a{text-decoration: none; color: #333;}
-.refresh{
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.refresh {
+  background-color: rgb(0, 200, 255);
+  border: none;
+}
+
+.goback {
+  background-color: rgb(0, 200, 255);
+  border: none;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.postButton,
+a {
+  color: white;
+}
+
+#filtered-bins-container,
+#available-bins-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#my-posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  margin: 10px;
+}
+
+  /* Adjust margin as needed */
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .refresh {
     background-color: #B7CE63;
     border: none;
   }
 
-  .goback{
+  .goback {
     background-color: #B7CE63;
     border: none;
-  }  
-h1{text-align: center;
-margin-top: 15px;}
-.postButton, a{color: white;}
-
-.main-btn-collection button{
-  width: 19rem;
-  margin-inline: auto;
-}
-
-@media (max-width:800px){
-  .main-btn-collection button{
-    width: 80%;
   }
-}
+
+  h1 {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .postButton, a {
+    color: white;
+  }
+
+  .main-btn-collection button {
+    width: 19rem;
+    margin-inline: auto;
+  }
+
+  @media (max-width:800px) {
+    .main-btn-collection button {
+      width: 80%;
+    }
+  }
 
 /**logo reduce whitespace around image*/
 .img-thumbnail{
   margin:0px;
   padding:0px;
-  border: none:
+  border: none;
 }
 
 /**colour for cards on aboutus.html*/
@@ -77,3 +132,5 @@ margin-top: 15px;}
   width: 100%;
 
 }
+
+
