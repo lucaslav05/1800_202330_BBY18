@@ -21,6 +21,15 @@
 // addToFavourites();
 // viewOnMap();
 
+// function viewMap() {
+//     let params = new URL(window.location.href);
+//     let ID = params.searchParams.get("docID");
+//     console.log(ID);
+
+//     document.getElementById('viewOnMap').href="map.html?docID=" + ID;
+// }
+// viewMap();
+
 var USERID;
 
 
