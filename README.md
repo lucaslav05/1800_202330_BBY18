@@ -51,17 +51,46 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
+├── aboutus.html             # About us page
+├── available.html           # Displays all the posts with status "Active"
+├── bininfo.html             # Displays the information for a post
+├── confirm_end_event.html   # Confirmation page for when a user deletes their post
+├── faq.html                 # FAQ page
+├── favourites.html          # Displays users favourites
 ├── index.html               # landing HTML file, this is what users see when you come to url
-└── README.md
+├── login.html               # Login page
+├── main.html                # Main page, this is where users come once they have logged in
+├── map.html                 # Map that displays users location and location of a specific bin
+├── mybins.html              # Dislays all the posts the user has made
+├── mybinsinfo.html          # Displays the information for a post the user has made
+├── newpost.html             # Form for users to create a new post
+├── README.md
+└── thankyou.html            # Thank you page for when user creates a new post
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
     /blah.jpg                # Acknowledge source
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
+    /aboutus.js                 # 
+    /authentication.js
+    /available.js
+    /binExpiry.js
+    /bininfo.js
+    /confirm_end_event.js
+    /fav.js
+    /firebaseAPI_TEAM99.js
+    /map.js
+    /mybins.js
+    /newpost.js
+    /profile.js
+    /script.js
+    /skeleton.js
+    /thankyou.js
+    /username.js
+    /viewmyposts.js
 ├── styles                   # Folder for styles
-    /blah.css                # 
+    /style.css                # 
 
 
 
