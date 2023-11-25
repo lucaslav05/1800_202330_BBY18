@@ -124,6 +124,7 @@ a {
   margin:0px;
   padding:0px;
   border: none;
+  max-height: 350px;
 }
 
 /**colour for cards on aboutus.html*/
