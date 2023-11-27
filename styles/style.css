@@ -124,7 +124,7 @@ a {
   margin:0px;
   padding:0px;
   border: none;
-  max-height: 350px;
+  max-height: 300px;
 }
 
 /**colour for cards on aboutus.html*/
@@ -150,6 +150,13 @@ a {
   text-align: center;
 }
 
+#favImg{
+  width: 70%;
+}
+
+.faveCard{
+  width: 90%;
+}
 
 
 
