@@ -355,4 +355,7 @@ function removeFromFavorites() {
     });
        
 }
+<<<<<<< HEAD
 }
+=======
+>>>>>>> refs/remotes/origin/main
