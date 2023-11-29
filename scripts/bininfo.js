@@ -242,7 +242,6 @@ function displayPictures(doc) {
        ; //the field that contains the URL 
     
 
-<<<<<<< HEAD
        //clone the new card
        let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
        //populate with image
@@ -328,7 +327,5 @@ function removeFromFavorites() {
     }).catch(function (error) {
         console.log("Error adding new user: " + error);
     });
-=======
        
->>>>>>> 8398da69c5570cbd03bdf7da352419dfe0d5de3b
 }

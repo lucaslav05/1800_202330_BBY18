@@ -84,6 +84,3 @@ function displayMyPost(postID){
 }
 
 getMyPosts();
-
-
-
