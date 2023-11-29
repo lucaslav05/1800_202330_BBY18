@@ -4,6 +4,11 @@ div {
   font-family: 'Kdam Thmor Pro', sans-serif;
 }
 
+body, html{
+  margin: 0;
+  padding: 0;
+}
+
 /** base colour setting*/
 body{
   background-color: #DADDD8;
@@ -13,6 +18,7 @@ body{
 .btn{
   background-color: #4B5842;
   color: white;
+  border: none;
 }
 
 /** navbar colour setting*/
@@ -65,11 +71,13 @@ a {
   justify-content: center;
 }
 
-#my-posts-container {
+#my-posts-container, #my-favourites-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+
 
 .card {
   margin: 10px;
@@ -116,6 +124,7 @@ a {
   margin:0px;
   padding:0px;
   border: none;
+  max-height: 300px;
 }
 
 /**colour for cards on aboutus.html*/
@@ -126,10 +135,12 @@ a {
 /**colour for card heading on available.html and mybins.html*/
 .card-header{
   background-color: #C7D59F;
+  text-align: center;
 }
 
 .card{
   width: 100%;
+  
 
 }
 #bininfo{
@@ -137,9 +148,20 @@ a {
 }
 
 
-/* #bininfo button{
 
-  width: 7rem;
-  margin-inline: auto;
-  font-size: 13px;
-} */
+.card-body{
+  text-align: center;
+}
+
+#favImg{
+  width: 70%;
+}
+
+.faveCard{
+  width: 90%;
+}
+
+
+
+
+

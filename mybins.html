@@ -61,11 +61,11 @@
   <!--Link to the nav bar here -->
   <nav id="navbarPlaceholder"></nav>
   
-  <div id="myposts"  class="px-4 pt-5 my-5 text-center border-bottom">
-    <h1 class="display-4 fw-bold">My Posts</h1>
+  <div id="myposts"  class="px-4 pt-5 my-1 text-center border-bottom">
+    <h1 class="display-4 fw-bold"> <span id="name-goes-here"></span>'s Posts</h1>
     <br/><br/>
-    <h3>Click "View Details" on any of your posts below to see the details of your bin and to see if others have contributed to your bin! </h3>
-
+    <!-- <h3>Click "View Details" on any of your posts below to see the details of your bin and to see if others have contributed to your bin! </h3> -->
+  
     <div id="my-posts-container" class="row row-cols-auto">
 
     
@@ -73,13 +73,14 @@
 
     </div>
 
+  </div>
+
   <!--Link to footer here-->
   <nav id="footerPlaceholder"></nav>
 
 <!--Template for Posts-->
   <template id="my-posts-template">
     <div class="card py-2 mx-2">
-      <img class="card-image card-img-top" src=" ..." alt="...">
       <div class="card-header" id="my-post-status">
         My Post
       </div>
@@ -105,6 +106,7 @@
   <script src="./scripts/skeleton.js"></script>
   <!-- <script src="./scripts/authentication.js"></script> -->
   <script src="./scripts/mybins.js"></script>
+ <script src="./scripts/username.js"></script>
 
 
 </body>

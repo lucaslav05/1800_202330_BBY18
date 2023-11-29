@@ -24,6 +24,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
   <!-- Other libraries go here -->
@@ -34,7 +35,7 @@
 
 
   <!-- Link to styles of your own -->
-  <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+  <link rel="stylesheet" href="./styles/style.css">
   <link rel="stylesheet" href="./styles/style.css">
 </head>
 
@@ -55,19 +56,21 @@
   <!--List of bins will go here-->
 
   <div id="favourites" class="Bins">
-    <h1 class="display-4 fw-bold">Favourites</h1>
-    <h3><img src="images/fav_bins_image.png" class="img-thumbnail" alt="favourite bin image"></a></h3>
-    <br /><br />
-    <div class="card">
+    <h1 class="display-4 fw-bold"><span id="name-goes-here"></span>'s Favourites</h1>
+    <div id="favImg">
+    <h3><img src="images/fav_bins_image.png" class="img-thumbnail" alt="favourite bin image" ></a></h3>
+  </div>
+    <!-- <div class="card"> -->
 
 
 
-      <div id="my-favourites-container" class="row row-cols-auto">
+      <div id="my-favourites-container" class="row row-cols-auto d-flex justify-content-center" >
 
     
 
 
       </div>
+    </div>
 
       <!-- <div class="card-body">
           <div class="d-flex justify-content-between">
@@ -88,12 +91,12 @@
           
         </div> -->
         <template id="my-favourites-template">
-          <div class="card py-2 mx-2">
-            <img class="card-image card-img-top" src=" ..." alt="...">
+          <div class="card py-2 mx-2 my-2 faveCard">
+            <!-- <img class="card-image card-img-top" src=" ..." alt="..."> -->
             <div class="card-header" id="my-favourites-status">
               My favourites
             </div>
-            <div class="card-body ">
+            <div class="card-body">
               <h5 class="card-title" id="my-favourites-title">Title</h5>
               <p class="card-text"><b>Location:</b> <span id="my-favourites-location">123 burnaby</span></p>
               <p class="card-text"><b>Items Accepted:</b> <span id="my-favourites-item">plastic</span></p>
@@ -102,6 +105,8 @@
           </div>
       
         </template>
+
+        
       
 
 
@@ -117,6 +122,7 @@
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/fav.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="./scripts/username.js"></script>
 
 </body>
 
