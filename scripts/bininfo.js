@@ -206,6 +206,7 @@ function showPictures() {
     db.collection("posts").doc(postID).collection("pictures")
         //.orderBy(...)       //optional ordering
         //.limit(3)           //optional limit
+        .limit(1)
         .get()
         .then(snap => {
             snap.forEach(doc => {
