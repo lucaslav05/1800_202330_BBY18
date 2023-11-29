@@ -247,15 +247,12 @@ function displayPictures(doc) {
 
 
 
-<<<<<<< HEAD
        //clone the new card
        let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
        //populate with image
        newcard.querySelector('.card-image').src = image;
        //append to the posts
        document.getElementById("pictureCardTemplate").append(newcard);
-=======
->>>>>>> 85ff0f14b8a968689324e5dcd4c87a37027e4385
 }
 
 document.getElementById('viewOnMap').addEventListener('click', function () {
@@ -357,8 +354,5 @@ function removeFromFavorites() {
         console.log("Error adding new user: " + error);
     });
        
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> 85ff0f14b8a968689324e5dcd4c87a37027e4385
