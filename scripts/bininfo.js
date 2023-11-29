@@ -247,6 +247,12 @@ function displayPictures(doc) {
 
 
 
+       //clone the new card
+       let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
+       //populate with image
+       newcard.querySelector('.card-image').src = image;
+       //append to the posts
+       document.getElementById("pictureCardTemplate").append(newcard);
 }
 
 document.getElementById('viewOnMap').addEventListener('click', function () {
