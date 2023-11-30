@@ -221,7 +221,7 @@ function showPictures() {
             })
         })
 }
-showPictures();
+// showPictures();
 
 //------------------------------------------------------------
 // this function displays ONE card, with information
