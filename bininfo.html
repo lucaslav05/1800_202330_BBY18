@@ -111,7 +111,8 @@
       <a class="btn" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
         aria-controls="multiCollapseExample1">Upload Picture</a>
       <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="Gallery" aria-expanded="false"
-        aria-controls="Gallery">View Photos</button>
+        aria-controls="Gallery" onclick = "showPictures()" >View Photos</button>
+        
 
     </p>
     <div class="row">
@@ -123,6 +124,7 @@
                 <div class="container py-3">
                   <input type="file" id="mypic-input" accept="image/*" />
                   <img id="mypic-goes-here" width=100 height=100 />
+
                 </div>
                 <div class="d-flex mt-5">
                   <button type="button" class="btn" onclick="savePost()">Post Now</button>
@@ -137,7 +139,6 @@
           <template id="pictureCardTemplate">
             <div class="card py-2 mx-2 bg-light" style="width: 10rem;">
               <img class="card-image card-img-top" id="galleryImage" src=" ..." alt="...">
-    
             </div>
           </template>
           <!-- <div class="card card-body">
