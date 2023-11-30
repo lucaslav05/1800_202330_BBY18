@@ -56,16 +56,16 @@
 
   <div id="available" class="px-4 pt-5 my-0 text-center border-bottom">
     <h1 class="display-4 fw-bold">Available Bins</h1>
-    
+
     <h2><img src="images/avl_bin_image2.png" class="img-thumbnail" alt="available bin image"></a></h2>
 
     <p>
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#filterForm"
-        aria-expanded="false" aria-controls="collapseExample" id="filterButton">
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#filterForm" aria-expanded="false"
+        aria-controls="collapseExample" id="filterButton">
         Filter by Item Type
       </button>
     </p>
-  
+
 
     <!--Form for users to filter the item types-->
     <div class="collapse my-3" id="filterForm">
@@ -111,55 +111,58 @@
             </div>
           </div>
         </div>
-        <button class="btn my-2 " data-bs-toggle="collapse" data-bs-target="#filterForm" type="submit" id="applyFilter">Apply Filter</button>
+        <button class="btn my-2 " data-bs-toggle="collapse" data-bs-target="#filterForm" type="submit"
+          id="applyFilter">Apply Filter</button>
       </div>
-      
+
     </div>
 
 
-    <div class="d-flex justify-content-center"> <button class="btn" id="removeFilter" style="display:none;" onclick="removeFilter()">Remove Filter</button> </div>
-      <br/>
+    <div class="d-flex justify-content-center"> <button class="btn" id="removeFilter" style="display:none;"
+        onclick="removeFilter()">Remove Filter</button> </div>
+    <br />
     <div id="filtered-bins-container" class="row row-cols-auto" style="display:hidden;">
-      
-      
+
+
     </div>
 
     <!--Container where the available bins will be displayed-->
     <div id="available-bins-container" class="row row-cols-auto my-0" style="display:auto;">
-
     </div>
 
+    <div class="py-4">
+    </div>
   </div>
-    <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
+  <!-- our own footer goes here-->
+  <nav id="footerPlaceholder"></nav>
 
-    <!--Template for the card-->
+  <!--Template for the card-->
 
-    <template id="available-bin-template">
-      <div class="card py-2 mx-2 my-2">
-        <div class="card-header">
-          Available
-        </div>
-        <div class="card-body ">
-          <h5 class="card-title" id="available-title">Title</h5>
-          <p class="card-text"><b>Location:</b> <span id="available-location">123 burnaby</span></p>
-          <p class="card-text"><b>Items Accepted:</b> <span id="available-item">plastic</span></p>
-          <a href="#" class="btn" id="view-available-details">View Details</a>
-        </div>
+  <template id="available-bin-template">
+    <div class="card py-2 mx-2 my-2">
+      <div class="card-header">
+        Available
       </div>
+      <div class="card-body ">
+        <h5 class="card-title" id="available-title">Title</h5>
+        <p class="card-text"><b>Location:</b> <span id="available-location">123 burnaby</span></p>
+        <p class="card-text"><b>Items Accepted:</b> <span id="available-item">plastic</span></p>
+        <a href="#" class="btn" id="view-available-details">View Details</a>
+      </div>
+    </div>
 
-    </template>
+  </template>
 
 
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_TEAM99.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/authentication.js"></script> -->
-    <script src="./scripts/available.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
+  <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <!-- <script src="./scripts/authentication.js"></script> -->
+  <script src="./scripts/available.js"></script>
+  <!-- <script src="./scripts/script.js"></script> -->
 
 
 </body>

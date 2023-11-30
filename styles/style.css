@@ -161,6 +161,14 @@ a {
   width: 90%;
 }
 
+.cardBody{
+  margin-top: 1rem;
+}
+
+.cardTitle{
+  margin-bottom: 1rem;
+}
+
 
 
 
