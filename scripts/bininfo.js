@@ -162,6 +162,7 @@ function uploadPic(postDocID) {
                     // AFTER .update is done
                     // .then(function () {
                     console.log('4. Added pic URL to Firestore.');
+                    location.reload();
                     // One last thing to do:
                     // save this postID into an array for the OWNER
                     // so we can show "my posts" in the future
