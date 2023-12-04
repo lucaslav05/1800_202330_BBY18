@@ -199,3 +199,54 @@ function removeFromFavourites(){
 
 //THOUGHTS IN MY BRAIN: have the confirm delete button call the remove from favourites and then, put a .then at the end of remove from favourites
 // and call the confirm delete function --> this way you can ensure that the post has been removed from favourites before deleting
+
+
+var ImageFile;
+function listenFileSelect() {
+    // listen for file selection
+    var fileInput = document.getElementById("mypic-input"); // pointer #1
+    const image = document.getElementById("mypic-goes-here"); // pointer #2
+
+
+
+    // When a change happens to the File Chooser Input
+    fileInput.addEventListener('change', function (e) {
+        ImageFile = e.target.files[0];   //Global variable
+        var blob = URL.createObjectURL(ImageFile);
+        image.src = blob; // Display this image
+        console.log("This is the blob" + blob);
+
+
+    })
+}
+listenFileSelect();
+
+
+//-------------------------------------------------
+// this function shows ALL the pictures from the 
+// stand alone pictures subcollection
+//------------------------------------------------
+function showPictures() {
+    document.getElementById("Gallery").innerHTML= "";
+    console.log("show picture");
+    let params = new URL(window.location.href);
+    let postID = params.searchParams.get("docID");
+    db.collection("posts").doc(postID).collection("pictures")
+        //.orderBy(...)       //optional ordering
+        //.limit(3)           //optional limit
+        .limit(1)
+        .get()
+        .then(snap => {
+            snap.forEach(doc => {
+                let image = doc.data().image;
+                let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
+
+                console.log("the doc!!!" + doc + "image" + image);
+                newcard.querySelector('.card-image').src = image;
+                //append to the posts
+                document.getElementById("Gallery").append(newcard);
+                // displayPictures(doc);
+            })
+        })
+}
+

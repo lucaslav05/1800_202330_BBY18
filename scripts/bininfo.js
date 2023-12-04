@@ -200,6 +200,7 @@ function uploadPic(postDocID) {
 // stand alone pictures subcollection
 //------------------------------------------------
 function showPictures() {
+    document.getElementById("Gallery").innerHTML= "";
     console.log("show picture");
     let params = new URL(window.location.href);
     let postID = params.searchParams.get("docID");
