@@ -3,3 +3,9 @@
 node_modules/
 .vscode/
 firebaseAPI_TEAM99.js
+firebase.json
+404.html
+firestore.indexes.json
+firestore.rules
+.firebaserc
+
