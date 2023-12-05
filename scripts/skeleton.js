@@ -1,17 +1,17 @@
 //---------------------------------------------------
 // This function loads the parts of your skeleton 
 // (navbar, footer, and other things) into html doc. 
+// This function is called on all pages of the app.
 //---------------------------------------------------
 function loadSkeleton() {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {                   //if the pointer to "user" object is not null, then someone is logged in
-            // User is signed in.
-            // Do something for the user here.
+            // User is signed in, so load nav_after_login.html and footer.html
             console.log($('#navbarPlaceholder').load('./text/nav_after_login.html'));
             console.log($('#footerPlaceholder').load('./text/footer.html'));
         } else {
-            // No user is signed in.
+            // No user is signed in, so load nav_before_login.html and footer.html
             console.log($('#navbarPlaceholder').load('./text/nav_before_login.html'));
             console.log($('#footerPlaceholder').load('./text/footer.html'));
         }

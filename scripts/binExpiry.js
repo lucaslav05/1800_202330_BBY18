@@ -1,4 +1,3 @@
-
 // Updates the status of posts whose end date has passed to Inactive
 function binExpiry(){
     console.log("binExpiry loaded");

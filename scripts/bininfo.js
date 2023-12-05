@@ -97,7 +97,7 @@ function savePost(postDocID) {
 
 
 
-            alert("SAVE POST is triggered");
+            alert("Image successfully saved!");
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     // User is signed in.
@@ -138,6 +138,8 @@ function savePost(postDocID) {
 // and we know the post's document id.
 //------------------------------------------------
 function uploadPic(postDocID) {
+    let params = new URL(window.location.href);
+    let postID = params.searchParams.get("docID");
     console.log("inside uploadPic " + postDocID);
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
 
@@ -162,6 +164,7 @@ function uploadPic(postDocID) {
                     // AFTER .update is done
                     // .then(function () {
                     console.log('4. Added pic URL to Firestore.');
+                    location.reload();
                     // One last thing to do:
                     // save this postID into an array for the OWNER
                     // so we can show "my posts" in the future
@@ -200,6 +203,7 @@ function uploadPic(postDocID) {
 // stand alone pictures subcollection
 //------------------------------------------------
 function showPictures() {
+    document.getElementById("Gallery").innerHTML= "";
     console.log("show picture");
     let params = new URL(window.location.href);
     let postID = params.searchParams.get("docID");
