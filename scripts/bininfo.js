@@ -1,35 +1,3 @@
-// function addItems() {
-//     document.getElementById("addItemsButton").addEventListener("click",() =>{
-//         console.log("add items button clicked!");
-//     });
-
-// }
-
-// function addToFavourites(){
-//     document.getElementById("favouriteButton").addEventListener("click", () => {
-//         console.log("added to favourites!");
-//     })
-// }
-
-// function viewOnMap(){
-//     document.getElementById("viewOnMap").addEventListener("click", () => {
-//         console.log("view on map clicked!");
-//     })
-// }
-
-// addItems();
-// addToFavourites();
-// viewOnMap();
-
-// function viewMap() {
-//     let params = new URL(window.location.href);
-//     let ID = params.searchParams.get("docID");
-//     console.log(ID);
-
-//     document.getElementById('viewOnMap').href="map.html?docID=" + ID;
-// }
-// viewMap();
-
 var USERID;
 
 
@@ -177,29 +145,8 @@ function uploadPic(postDocID) {
         })
 }
 
-//--------------------------------------------
-//saves the post ID for the user, in an array
-//--------------------------------------------
-// function savePostIDforUser(postDocID) {
-//     firebase.auth().onAuthStateChanged(user => {
-//           console.log("user id is: " + user.uid);
-//           console.log("postdoc id is: " + postDocID);
-//           db.collection("users").doc(user.uid).update({
-//                 myposts: firebase.firestore.FieldValue.arrayUnion(postDocID)
-//           })
-//           .then(() =>{
-//                 console.log("5. Saved to user's document!");
-//                                 alert ("Post is complete!");
-//                 //window.location.href = "showposts.html";
-//            })
-//            .catch((error) => {
-//                 console.error("Error writing document: ", error);
-//            });
-//     })
-// }
-
 //-------------------------------------------------
-// this function shows ALL the pictures from the 
+// this function shows the last image posted from the 
 // stand alone pictures subcollection
 //------------------------------------------------
 function showPictures() {
@@ -225,40 +172,10 @@ function showPictures() {
             })
         })
 }
-// showPictures();
 
-//------------------------------------------------------------
-// this function displays ONE card, with information
-// from the post document extracted (name, description, image)
-//------------------------------------------------------------
-function displayPictures(doc) {
-    console.log("display image");
-    let params = new URL(window.location.href);
-    let postID = params.searchParams.get("docID");
-
-    db.collection("posts").doc(postID).collection("pictures").doc(doc).get().then((pic) => {
-        let image = pic.data().image;
-        //clone the new card
-        let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
-        //populate with image
-        newcard.querySelector('#galleryImage').src = image;
-        //append to the posts
-        document.getElementById("Gallery").append(newcard);
-    })
-
-        //    var image = storage.ref("images/" + doc.id + ".jpg");
-        ; //the field that contains the URL 
-
-
-
-       //clone the new card
-       let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
-       //populate with image
-       newcard.querySelector('.card-image').src = image;
-       //append to the posts
-       document.getElementById("pictureCardTemplate").append(newcard);
-}
-
+//---------------------------------------------------------------------------------
+// add a description 
+//---------------------------------------------------------------------------------
 document.getElementById('viewOnMap').addEventListener('click', function () {
     // set the ID in local storage
     localStorage.setItem('id', ID);
@@ -272,14 +189,12 @@ document.getElementById('viewOnMap').addEventListener('click', function () {
     }
 });
 
-//        //clone the new card
-//        let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
-//        //populate with image
-//        newcard.querySelector('.card-image').src = image;
-//        //append to the posts
-//        document.getElementById("pictureCardTemplate").append(newcard);
-// }
 
+//------------------------------------------------------------------------------------
+// This function calls the remove from favourites and add to favourites functon. 
+// Keeps track of the logged in user whether the post is already favourited or not and 
+// will display the appropriate corresponding button.
+//------------------------------------------------------------------------------------
 
 const auth = firebase.auth();
 let params = new URL(window.location.href);
@@ -320,6 +235,11 @@ auth.onAuthStateChanged(user => {
         window.location.assign("login.html");
     }
 });
+
+//------------------------------------------------------------------------------------
+// this function adds the binID to the user's favourites array in Firebase.
+// and it adds the user id to the favedByUser array in the post doc in Firebase.
+//------------------------------------------------------------------------------------
 function addToFavorites() {
     const favouritesUnion = firebase.firestore.FieldValue.arrayUnion(binID)
     db.collection("users").doc(userID).update({
@@ -339,6 +259,11 @@ function addToFavorites() {
         console.log("Error adding new user: " + error);
     });
 }
+
+//------------------------------------------------------------------------------------
+// this function removes the binID from the user's favourites array in Firebase.
+// and it removes the user id from the favedByUser array in the post doc in Firebase.
+//------------------------------------------------------------------------------------
 function removeFromFavorites() {
     const favouritesUnion = firebase.firestore.FieldValue.arrayRemove(binID)
     db.collection("users").doc(userID).update({
