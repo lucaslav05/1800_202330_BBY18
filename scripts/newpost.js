@@ -1,5 +1,6 @@
 function processForm() {
-    document.getElementById("postButton").addEventListener("click", () => {
+    document.getElementById("postButton").addEventListener("submit", (event) => {
+        event.preventDefault();
 
         var postRef = db.collection("posts");
         var ImageFile;
@@ -27,6 +28,11 @@ function processForm() {
             type = document.getElementById("styrofoam").value;
         } else if (document.getElementById("other").checked) {
             type = document.getElementById("other").value;
+        }
+
+        if (!title || !endDate || !description) {
+            alert("Please fill in all required fields.");
+            return;
         }
 
         postRef.add({

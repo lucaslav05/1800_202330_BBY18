@@ -62,7 +62,7 @@
         <h1 class="display-4 fw-bold">Create A Bin</h1>
 
         <!--Form for users to create a new post-->
-        <form>
+        <form id="postButton">
 
             <div class="form-group">
                 <label for="exampleFormControlInput1">Title</label>
@@ -108,6 +108,12 @@
                             Styrofoam
                         </label>
                     </div>
+                    <div class="form-check">
+                        <input value="Other" type="radio" name="flexRadioDefault" id="other" checked>
+                        <label class="Other" for="flexRadioDefault2">
+                            Other
+                        </label>
+                    </div>
                 </div>
             </div>
 
@@ -124,7 +130,7 @@
             </div>
 
             <br />
-            <input id="postButton" type="submit" placeholder="Submit" value="submit">
+            <input type="submit" placeholder="Submit">
         </form>
 
     </div>
