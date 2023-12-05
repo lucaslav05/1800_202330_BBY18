@@ -25,6 +25,8 @@ function processForm() {
             type = document.getElementById("metal").value;
         } else if (document.getElementById("styrofoam").checked) {
             type = document.getElementById("styrofoam").value;
+        } else if (document.getElementById("other").checked) {
+            type = document.getElementById("other").value;
         }
 
         postRef.add({
