@@ -129,14 +129,7 @@ function confirmDelete() {
         console.log("post was deleted!");
         
       })
-      // }).then(() => {
-      //   window.location.href = "confirm_end_event.html";
-      // });  this one won't delete the post
-    })
-    // .then(() =>{
-    //   window.location.href = "confirm_end_event.html";
-    // }) this one won't go to a new page
-    
+    }) 
   }
 
 // Removes the specified postId from from all the favourite arrays of users who have favourited the post

@@ -7,7 +7,6 @@ function displayBinInfo() {
 
 
     console.log(ID);
-    // ID = "Al8brtXfuGA5yxHd9aGY";
     db.collection("posts")
         .doc(ID)
         .get()
@@ -101,7 +100,7 @@ function savePost(postDocID) {
 // and it contains a bunch of fields.
 // We want to store the image associated with this post,
 // such that the image name is the postid (guaranteed unique).
-// 
+
 // This function is called AFTER the post has been created, 
 // and we know the post's document id.
 //------------------------------------------------
