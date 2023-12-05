@@ -97,7 +97,7 @@ function savePost(postDocID) {
 
 
 
-            alert("SAVE POST is triggered");
+            alert("Image successfully saved!");
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     // User is signed in.
@@ -138,6 +138,8 @@ function savePost(postDocID) {
 // and we know the post's document id.
 //------------------------------------------------
 function uploadPic(postDocID) {
+    let params = new URL(window.location.href);
+    let postID = params.searchParams.get("docID");
     console.log("inside uploadPic " + postDocID);
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
 
