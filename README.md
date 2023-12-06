@@ -119,26 +119,24 @@ It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
     /blah.jpg                # Acknowledge source
-├── scripts                  # Folder for scripts
-    /aboutus.js                 # 
-    /authentication.js
-    /available.js
-    /binExpiry.js
-    /bininfo.js
-    /confirm_end_event.js
-    /fav.js
-    /firebaseAPI_TEAM99.js
-    /map.js
-    /mybins.js
-    /newpost.js
-    /profile.js
-    /script.js
-    /skeleton.js
-    /thankyou.js
-    /username.js
-    /viewmyposts.js
+├── scripts                  # Folder for scripts 
+    /authentication.js       # Authenticates the user using Firebase, on login.html
+    /available.js            # JS for displaying Active bins on available.html
+    /binExpiry.js            # JS to change status of bins whose end dates have passed to Inactive
+    /bininfo.js              # JS for bininfo page, includes functionality for uploading and displaying images, adding and
+                             # and removing a bin from favourites, displaying bin information, and clicking the map button
+    /fav.js                  # JS for displaying a user's favourited posts on favourites.html
+    /firebaseAPI_TEAM99.js   # firebase API keys and storage
+    /map.js                  # JS for map.html, implements Mapbox and Geocoder
+    /mybins.js               # JS for displaying a user's posts on mybins.html
+    /newpost.js              # JS for creating a new post on newpost.html
+    /script.js               # JS for logging out a user, on index.html and login.html
+    /skeleton.js             # JS for displaying the correct nav bar and footers, across all pages
+    /username.js             # JS for displaying a user's name, used on main.html, favourites.html, mybins.html
+    /viewmyposts.js          # JS for displaying information for a users post, deactivating a post, deleting a post, 
+                             # displaying the latest picture that a user uploaded
 ├── styles                   # Folder for styles
-    /style.css                # 
+    /style.css                # Style across all pages
 
 
 
