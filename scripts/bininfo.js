@@ -126,7 +126,7 @@ function uploadPic(postDocID) {
             storageRef.getDownloadURL()
 
 
-                .then(function (url) { /
+                .then(function (url) { 
                     console.log("3. Got the download URL.");
                     console.log('4. Added pic URL to Firestore.');
                     location.reload();
