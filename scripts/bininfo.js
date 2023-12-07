@@ -34,25 +34,35 @@ function displayBinInfo() {
 
 displayBinInfo();
 
+//--------------------------------------------------------------------
+// Listens to the file selection event when a user selects an image file through a file input element
+// and retrieves the file input element. Event listener added to the file input 
+// element, capturing the selected file which is stored in the global variable ImageFile
+//--------------------------------------------------------------------
+
 var ImageFile;
 function listenFileSelect() {
-    // listen for file selection
-    var fileInput = document.getElementById("mypic-input"); // pointer #1
-    const image = document.getElementById("mypic-goes-here"); // pointer #2
+    var fileInput = document.getElementById("mypic-input"); 
+    const image = document.getElementById("mypic-goes-here"); 
 
-
-
-    // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
-        ImageFile = e.target.files[0];   //Global variable
+        ImageFile = e.target.files[0];   
         var blob = URL.createObjectURL(ImageFile);
-        image.src = blob; // Display this image
+        image.src = blob; 
         console.log("This is the blob" + blob);
 
 
     })
 }
 listenFileSelect();
+
+//----------------------------------------------------------------------
+// Function is called when saving a post along with an associated image 
+// Creates a storage reference for the image in Firebase Storage using the post document 
+// ID and uploads the image file to Firebase Storage.
+// Adds a new document to the "pictures" subcollection of the post has info like 
+// owner's user ID and the timestamp.
+//----------------------------------------------------------------------
 
 function savePost(postDocID) {
     let params = new URL(window.location.href);
@@ -67,8 +77,6 @@ function savePost(postDocID) {
             alert("Image successfully saved!");
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
-                    // User is signed in.
-                    // Do something for the user here. 
                     console.log(user.uid);
                     USERID = user.uid;
                     storageRef.getDownloadURL()
@@ -88,7 +96,6 @@ function savePost(postDocID) {
                             })
                         });
                 } else {
-                    // No user is signed in.
                     console.log("Error, no user signed in");
                 }
             });
@@ -96,6 +103,12 @@ function savePost(postDocID) {
 };
 
 //------------------------------------------------
+
+//  using the post document 
+// ID and uploads the image file to Firebase Storage.
+// Adds a new document to the "pictures" subcollection of the post has info like 
+// owner's user ID and the timestamp.
+
 // So, a new post document has just been added
 // and it contains a bunch of fields.
 // We want to store the image associated with this post,
@@ -110,32 +123,18 @@ function uploadPic(postDocID) {
     console.log("inside uploadPic " + postDocID);
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
 
-    storageRef.put(ImageFile)   //global variable ImageFile
+    storageRef.put(ImageFile)  
 
-        // AFTER .put() is done
+ 
         .then(function () {
             console.log('2. Uploaded to Cloud Storage.');
             storageRef.getDownloadURL()
 
-                // AFTER .getDownloadURL is done
-                .then(function (url) { // Get URL of the uploaded file
-                    console.log("3. Got the download URL.");
 
-                    // Now that the image is on Storage, we can go back to the
-                    // post document, and update it with an "image" field
-                    // that contains the url of where the picture is stored.
-                    // db.collection("posts").doc(postDocID).collection("pictures").add({
-                    //         "image": url, // Save the URL into pictures storage
-                    //         "owner": USERID
-                    //     })
-                    // AFTER .update is done
-                    // .then(function () {
+                .then(function (url) { /
+                    console.log("3. Got the download URL.");
                     console.log('4. Added pic URL to Firestore.');
                     location.reload();
-                    // One last thing to do:
-                    // save this postID into an array for the OWNER
-                    // so we can show "my posts" in the future
-                    // savePostIDforUser(postDocID);
                 })
         })
         // })
@@ -154,8 +153,6 @@ function showPictures() {
     let params = new URL(window.location.href);
     let postID = params.searchParams.get("docID");
     db.collection("posts").doc(postID).collection("pictures")
-        //.orderBy(...)       //optional ordering
-        //.limit(3)           //optional limit
         .limit(1)
         .get()
         .then(snap => {
@@ -165,9 +162,8 @@ function showPictures() {
 
                 console.log("the doc!!!" + doc + "image" + image);
                 newcard.querySelector('.card-image').src = image;
-                //append to the posts
+
                 document.getElementById("Gallery").append(newcard);
-                // displayPictures(doc);
             })
         })
 }

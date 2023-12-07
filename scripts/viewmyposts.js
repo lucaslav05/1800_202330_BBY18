@@ -190,10 +190,11 @@ function removeFromFavourites(){
   })
 }
 
-//THOUGHTS IN MY BRAIN: have the confirm delete button call the remove from favourites and then, put a .then at the end of remove from favourites
-// and call the confirm delete function --> this way you can ensure that the post has been removed from favourites before deleting
-
-
+//--------------------------------------------------------------------
+// Listens to the file selection event when a user selects an image file through a file input element
+// and retrieves the file input element. Event listener added to the file input 
+// element, capturing the selected file which is stored in the global variable ImageFile
+//--------------------------------------------------------------------
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
@@ -216,7 +217,7 @@ listenFileSelect();
 
 
 //-------------------------------------------------
-// this function shows ALL the pictures from the 
+// this function shows the last image posted from the 
 // stand alone pictures subcollection
 //------------------------------------------------
 function showPictures() {
