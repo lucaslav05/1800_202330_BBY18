@@ -1,5 +1,9 @@
 var USERID;
 
+//-----------------------------------------------------------------------
+// This function displays all the bin info on the page, like title, location, 
+// bin end date, accepted item type, bin description.
+//-----------------------------------------------------------------------
 
 function displayBinInfo() {
     let params = new URL(window.location.href);
@@ -103,19 +107,10 @@ function savePost(postDocID) {
 };
 
 //------------------------------------------------
-
-//  using the post document 
-// ID and uploads the image file to Firebase Storage.
-// Adds a new document to the "pictures" subcollection of the post has info like 
-// owner's user ID and the timestamp.
-
-// So, a new post document has just been added
-// and it contains a bunch of fields.
-// We want to store the image associated with this post,
-// such that the image name is the postid (guaranteed unique).
-
-// This function is called AFTER the post has been created, 
-// and we know the post's document id.
+// Stores the image associated with this post,
+// such that the image name is the postid.
+// This function is called after the post has been created, 
+// and the post's document id is known.
 //------------------------------------------------
 function uploadPic(postDocID) {
     let params = new URL(window.location.href);
