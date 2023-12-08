@@ -102,7 +102,6 @@ function displayConfirmEnd() {
 //------------------------------------------------------------------------------------------------------------------
 // This function deletes a post from firestore and removes the post id from the users myPosts array in firestore
 // It is called when the "confirm delete" button is clicked
-// !!! Still need to remove the bin from the favourites array for all users who have favourited the post!!!
 //------------------------------------------------------------------------------------------------------------------
 function confirmDelete() {
 
