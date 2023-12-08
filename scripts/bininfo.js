@@ -173,7 +173,8 @@ function showPictures() {
 }
 
 //---------------------------------------------------------------------------------
-// add a description 
+// when view on map button is clicked user is redirected to map.html as well as
+// passing the bins id using local storage.
 //---------------------------------------------------------------------------------
 document.getElementById('viewOnMap').addEventListener('click', function () {
     // set the ID in local storage
