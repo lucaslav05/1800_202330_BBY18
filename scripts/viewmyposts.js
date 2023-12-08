@@ -1,5 +1,6 @@
-
+//------------------------------------------------------------------------------------------------------------------
 // Displays the information for the post that the user selected from mybins.html
+//------------------------------------------------------------------------------------------------------------------
 function displayMyPost() {
 
   // Get the post ID
@@ -33,10 +34,13 @@ function displayMyPost() {
 
 displayMyPost();
 
-var collectionName = "posts";
 
+
+var collectionName = "posts";
+//------------------------------------------------------------------------------------------------------------------
 // This function updates the status of a post to "Inactive"
 // The function is called when a user clicks "Confirm End"
+//------------------------------------------------------------------------------------------------------------------
 function updateStatusToInactive() {
 
   // Get the post ID
@@ -62,30 +66,43 @@ function updateStatusToInactive() {
     });
 }
 
-document.querySelector("#confirmEndButton").addEventListener("click", updateStatusToInactive);
 
+
+document.querySelector("#confirmEndButton").addEventListener("click", updateStatusToInactive);
+//------------------------------------------------------------------------------------------------------------------
 // This function displays an alert prompting the user to confirm that they want to delete their post
+//------------------------------------------------------------------------------------------------------------------
 function displayConfirmDelete() {
   document.getElementById("confirmDelete").style.display = "block";  // Display the alert message
 }
 
+//------------------------------------------------------------------------------------------------------------------
 // This function hides the alert prompting the user to confirm they want to delete their post
+//------------------------------------------------------------------------------------------------------------------
 function cancelDelete() {
   document.getElementById("confirmDelete").style.display = "none";  // Hide the alert message
 }
-
+//------------------------------------------------------------------------------------------------------------------
+// TThis function hides the alert prompting the user to confirm they want to deactivate their post
+//------------------------------------------------------------------------------------------------------------------
 function cancelEnd() {
   document.getElementById("confirmEnd").style.display = "none";  // Hide the alert message
 }
 
+//------------------------------------------------------------------------------------------------------------------
+//This function displays an alert prompting the user to confirm that they want to deactivate their post
+//------------------------------------------------------------------------------------------------------------------
 function displayConfirmEnd() {
   document.getElementById("confirmEnd").style.display = "block";  // Display the alert message
 }
 
 
+
+
+//------------------------------------------------------------------------------------------------------------------
 // This function deletes a post from firestore and removes the post id from the users myPosts array in firestore
 // It is called when the "confirm delete" button is clicked
-// !!! Still need to remove the bin from the favourites array for all users who have favourited the post!!!
+//------------------------------------------------------------------------------------------------------------------
 function confirmDelete() {
 
   // Get the postID
@@ -111,9 +128,6 @@ function confirmDelete() {
             console.log("new array: " + newPostArray)
           }
         }
-
-        
-
         // Use the new array as the user's new myPosts array
         db.collection("users").doc(userID).set(
           { "myposts": newPostArray }, { merge: true }   // set myposts to postArray
@@ -190,17 +204,20 @@ function removeFromFavourites(){
   })
 }
 
-//THOUGHTS IN MY BRAIN: have the confirm delete button call the remove from favourites and then, put a .then at the end of remove from favourites
-// and call the confirm delete function --> this way you can ensure that the post has been removed from favourites before deleting
 
 
+
+
+//--------------------------------------------------------------------
+// Listens to the file selection event when a user selects an image file through a file input element
+// and retrieves the file input element. Event listener added to the file input 
+// element, capturing the selected file which is stored in the global variable ImageFile
+//--------------------------------------------------------------------
 var ImageFile;
 function listenFileSelect() {
     // listen for file selection
     var fileInput = document.getElementById("mypic-input"); // pointer #1
     const image = document.getElementById("mypic-goes-here"); // pointer #2
-
-
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
@@ -215,9 +232,12 @@ function listenFileSelect() {
 listenFileSelect();
 
 
+
+
+
+
 //-------------------------------------------------
-// this function shows ALL the pictures from the 
-// stand alone pictures subcollection
+// this function shows the last image uploaded.
 //------------------------------------------------
 function showPictures() {
     document.getElementById("Gallery").innerHTML= "";
