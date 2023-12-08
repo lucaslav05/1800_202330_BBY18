@@ -71,13 +71,10 @@ listenFileSelect();
 function savePost(postDocID) {
     let params = new URL(window.location.href);
     let postID = params.searchParams.get("docID");
-    var storageRef = storage.ref("images/" + postDocID + ".jpg");
+    var storageRef = storage.ref("images/" + postID + ".jpg");
 
     storageRef.put(ImageFile)
         .then(function () {
-
-
-
             alert("Image successfully saved!");
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
@@ -90,13 +87,12 @@ function savePost(postDocID) {
                             console.log("this is url" + url);
                             db.collection("posts").doc(postID).collection("pictures").add({
                                 owner: user.uid,
-                                last_updated: firebase.firestore.FieldValue.serverTimestamp(), //current system time
+                                last_updated: firebase.firestore.FieldValue.serverTimestamp(),
                                 image: url
-
                             }).then(doc => {
                                 console.log("1. Post document added!");
                                 console.log(doc.id);
-                                uploadPic(doc.id);
+                                uploadPic(postID); // Pass postID to uploadPic
                             })
                         });
                 } else {
@@ -112,31 +108,26 @@ function savePost(postDocID) {
 // This function is called after the post has been created, 
 // and the post's document id is known.
 //------------------------------------------------
-function uploadPic(postDocID) {
-    let params = new URL(window.location.href);
-    let postID = params.searchParams.get("docID");
-    console.log("inside uploadPic " + postDocID);
-    var storageRef = storage.ref("images/" + postDocID + ".jpg");
+function uploadPic(postID) {
+    console.log("inside uploadPic " + postID);
+    var storageRef = storage.ref("images/" + postID + ".jpg");
 
-    storageRef.put(ImageFile)  
-
- 
+    storageRef.put(ImageFile)
         .then(function () {
             console.log('2. Uploaded to Cloud Storage.');
             storageRef.getDownloadURL()
-
-
-                .then(function (url) { 
+                .then(function (url) {
                     console.log("3. Got the download URL.");
                     console.log('4. Added pic URL to Firestore.');
                     location.reload();
                 })
         })
-        // })
         .catch((error) => {
             console.log("error uploading to cloud storage");
         })
 }
+
+
 
 //-------------------------------------------------
 // this function shows the last image posted from the 
@@ -147,18 +138,20 @@ function showPictures() {
     console.log("show picture");
     let params = new URL(window.location.href);
     let postID = params.searchParams.get("docID");
-    db.collection("posts").doc(postID).collection("pictures")
+   db.collection("posts")
+        .doc(postID)
+        .collection("pictures")
         .limit(1)
         .get()
         .then(snap => {
             snap.forEach(doc => {
                 let image = doc.data().image;
-                let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
-
-                console.log("the doc!!!" + doc + "image" + image);
-                newcard.querySelector('.card-image').src = image;
-
-                document.getElementById("Gallery").append(newcard);
+                if (image) { // Check if the post has an associated image
+                    let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
+                    console.log("the doc!!!" + doc + "image" + image);
+                    newcard.querySelector('.card-image').src = image;
+                    document.getElementById("Gallery").append(newcard);
+                }
             })
         })
 }
