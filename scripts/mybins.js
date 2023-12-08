@@ -1,3 +1,7 @@
+//--------------------------------------------------------------
+// Confirm user is logged in and get the current user's ID 
+// and accesses the users post array and save it in variable postArray
+//--------------------------------------------------------------
 function getMyPosts() {
 
     
@@ -24,6 +28,12 @@ function getMyPosts() {
 
     });
 }
+
+//--------------------------------------------------------------
+// Display posts will display all posts in the post collection.
+// Info included is title, location, type, status, item type, description.
+//  Function is called above to only display the current users.
+//--------------------------------------------------------------
 
 function displayMyPost(postID){
     let cardTemplate = document.getElementById("my-posts-template");
