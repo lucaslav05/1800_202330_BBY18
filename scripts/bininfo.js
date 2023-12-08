@@ -9,14 +9,12 @@ function displayBinInfo() {
     let params = new URL(window.location.href);
     ID = params.searchParams.get("docID");
 
-
     console.log(ID);
     db.collection("posts")
         .doc(ID)
         .get()
         .then(doc => {
             thisBin = doc.data();
-
 
             binTitle = doc.data().title;
             binLocation = doc.data().location;
@@ -92,7 +90,7 @@ function savePost(postDocID) {
                             }).then(doc => {
                                 console.log("1. Post document added!");
                                 console.log(doc.id);
-                                uploadPic(postID); // Pass postID to uploadPic
+                                uploadPic(postID); 
                             })
                         });
                 } else {
@@ -146,7 +144,7 @@ function showPictures() {
         .then(snap => {
             snap.forEach(doc => {
                 let image = doc.data().image;
-                if (image) { // Check if the post has an associated image
+                if (image) { 
                     let newcard = document.getElementById("pictureCardTemplate").content.cloneNode(true);
                     console.log("the doc!!!" + doc + "image" + image);
                     newcard.querySelector('.card-image').src = image;
