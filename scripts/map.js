@@ -1,3 +1,4 @@
+//function for setting up mapbox
 async function showMap() {
 
     // Initializes basic mapbox data
@@ -9,6 +10,7 @@ async function showMap() {
         zoom: 8.8 // Starting zoom
     });
 
+    //adds nav controls
     map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
     // Get user's location
@@ -39,10 +41,12 @@ async function showMap() {
 
 showMap();
 
+//function to add bins marker to the map
 function addHikePin(map) {
     var ID = localStorage.getItem("id");
     console.log(ID);
 
+    //checks if id is taken from local storage
     if (!ID) {
         console.error("No Post found in local storage.");
         return;

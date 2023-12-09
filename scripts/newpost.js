@@ -1,3 +1,6 @@
+// function that process all of the information inputted
+// into the newpost.html form and uploads it to the users
+// posts collection when they hit the submit button
 function processForm() {
     document.getElementById("postButton").addEventListener("submit", (event) => {
         event.preventDefault();
@@ -5,6 +8,7 @@ function processForm() {
         var postRef = db.collection("posts");
         var ImageFile;
 
+        // variables for all form information
         let title = document.getElementById("title").value;
         let enddate = document.getElementById("endDate").value;
         let description = document.getElementById("description").value;
@@ -30,6 +34,7 @@ function processForm() {
             type = document.getElementById("other").value;
         }
 
+        // makes sure info is filled
         if (!title || !endDate || !description) {
             alert("Please fill in all required fields.");
             return;
@@ -114,6 +119,8 @@ function handleImageUpload(postID) {
 }
 processForm();
 
+// this function is used to put the geocoder on the location
+// section of the form. it stores the cords and name of the location
 function placeGeocoder() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhbWNoZW4zIiwiYSI6ImNsMGZyNWRtZzB2angzanBjcHVkNTQ2YncifQ.fTdfEXaQ70WoIFLZ2QaRmQ';
     const geocoder = new MapboxGeocoder({
